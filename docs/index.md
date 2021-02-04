@@ -4,4 +4,49 @@
 
 ### Introduction
 
-* [Introduction to Identity - Part 1: Admin-time](./Introduction_to_Identity_-_Part1_Admin-time.md)
+
+
+### From the Editor
+* Editor’s Note – Heather Flanagan – Issue 1
+* Editor’s Note – Heather Flanagan – Issue 2
+* Editor’s Note – Heather Flanagan – Issue 3
+* Terminology in the IDPro Body of Knowledge – Heather Flanagan – Updated 2020-10-31
+
+### Introduction
+* [Introduction to Identity – Part 1: Admin-time – Espen Bago (Editor) and Ian Glazer – 2020-03-31](./Introduction_to_Identity_-_Part1_Admin-time.md)
+* Introduction to Identity – Part 2: Access Management – Pamela Dingle – 2020-06-18
+
+### Consumer / Citizen IAM
+* Introduction to Privacy for Consumers – Clare Nelson – 2020 -06-18
+
+### Workforce IAM
+* An Overview of the Digital Identity Lifecycle – Andrew Cameron and Olaf Grewe – 2020-10-31
+
+### Standards, Regulations, and Laws
+* [Review – ISO/IEC 24760-1:2019 – Corey Scholefield – 2020-03-31](./Review–ISO_IEC24760-1_2019.md)
+* Review – ISO/IEC 24760-2:2015 – George B. Dobbs – 2020 -06-18
+* Review – ISO/IEC 24760-3:2016 – Espen Bago – Published 2020-06-18
+* Laws Governing Identity Systems – Thomas J. Smedinghoff – 2020-03-31
+* An Introduction to GDPR – Andrew Cormack – 2020-03-31
+* Impact of GDPR on Identity and Access Management – Andrew Hindle – 2020-03-31
+
+### IAM Architecture and Solutions
+* Introduction to IAM Architecture – Andrew Cameron and Graham Williamson – 2020-06-18
+* Designing MFA for Humans – Nishant Kaushik – 2020-10-31
+
+### Access Control
+* Introduction to Access Control – André Koot – 2020-06-18
+
+### Digital Identity
+* Identifiers and Usernames – Ian Glazer – 2020-03-31
+* A Peek into the Future of Decentralized Identity – Leo Sorokin – 2020-10-31
+
+### Non-Human Entities
+* Non-Human Account Management – Graham Williamson and André Koot – 2020-10-31
+
+### Project Management
+* Introduction to Project Management for IAM Projects – Graham Williamson and Corey Scholefield – 2020-03-31
+
+### IAM Knowledge Sharing
+* Independent IAM Organizations – Mark Drummond – 2020-03-31
+

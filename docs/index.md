@@ -14,7 +14,7 @@
 
 ### Introduction
 * [Introduction to Identity – Part 1: Admin-time – Espen Bago (Editor) and Ian Glazer – 2020-03-31](./Introduction_to_Identity_-_Part1_Admin-time.md)
-* Introduction to Identity – Part 2: Access Management – Pamela Dingle – 2020-06-18
+* [Introduction to Identity – Part 2: Access Management – Pamela Dingle – 2020-06-18](./Introduction_to_Identity_-_Part_2_Access Management_result.md)
 
 ### Consumer / Citizen IAM
 * Introduction to Privacy for Consumers – Clare Nelson – 2020 -06-18
@@ -24,8 +24,8 @@
 
 ### Standards, Regulations, and Laws
 * [Review – ISO/IEC 24760-1:2019 – Corey Scholefield – 2020-03-31](./Review–ISO_IEC24760-1_2019.md)
-* Review – ISO/IEC 24760-2:2015 – George B. Dobbs – 2020 -06-18
-* Review – ISO/IEC 24760-3:2016 – Espen Bago – Published 2020-06-18
+* [Review – ISO/IEC 24760-2:2015 – George B. Dobbs – 2020 -06-18](./Review–ISO_IEC24760-2_2015.md)
+* [Review – ISO/IEC 24760-3:2016 – Espen Bago – Published 2020-06-18](./Review–ISO_IEC24760-3_2016.md)
 * Laws Governing Identity Systems – Thomas J. Smedinghoff – 2020-03-31
 * An Introduction to GDPR – Andrew Cormack – 2020-03-31
 * Impact of GDPR on Identity and Access Management – Andrew Hindle – 2020-03-31

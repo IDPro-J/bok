@@ -7,10 +7,10 @@
 
 
 ### From the Editor
-* Editor’s Note – Heather Flanagan – Issue 1
-* Editor’s Note – Heather Flanagan – Issue 2
+* [Editor’s Note – Heather Flanagan – Issue 1](./editors_note_issue_1.md)
+* [Editor’s Note – Heather Flanagan – Issue 2](./editors_note_issue_2.md)
 * Editor’s Note – Heather Flanagan – Issue 3
-* Terminology in the IDPro Body of Knowledge – Heather Flanagan – Updated 2020-10-31
+* [Terminology in the IDPro Body of Knowledge – Heather Flanagan – Updated 2020-10-31](./Terminology_in_the_IDPro_Body_of_Knowledge.md)
 
 ### Introduction
 * [Introduction to Identity – Part 1: Admin-time – Espen Bago (Editor) and Ian Glazer – 2020-03-31](./Introduction_to_Identity_-_Part1_Admin-time.md)

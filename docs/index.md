@@ -17,7 +17,7 @@
 * [Introduction to Identity – Part 2: Access Management – Pamela Dingle – 2020-06-18](./Introduction_to_Identity_-_Part_2_Access_Management_result.md)
 
 ### Consumer / Citizen IAM
-* Introduction to Privacy for Consumers – Clare Nelson – 2020 -06-18
+* [Introduction to Privacy for Consumers – Clare Nelson – 2020 -06-18](./introduction_to_privacy_and_compliance_for_consumers.md)
 
 ### Workforce IAM
 * An Overview of the Digital Identity Lifecycle – Andrew Cameron and Olaf Grewe – 2020-10-31

@@ -1,150 +1,148 @@
-## Abstract
+## 抄録
 
-This article describes how to deploy a thoughtful, consumer-friendly multi-factor authentication (MFA) program that will allow the IAM practitioner to successfully deliver on both the security and usability needs of their authentication systems. The approach is based on a framework of six pillars: determining the viability of different forms of MFA, allowing a multimodal rollout of MFA options, encouraging adoption, supporting MFA across all services and access channels, designing support processes, and creating a trusted environment where MFA can offer additional security to both the consumer and the company.
+この記事では、IAM 実務者が認証システムのセキュリティとユーザビリティの両方のニーズを成功裏に実現できるようにする、思慮深い、消費者に優しい多要素認証（MFA）プログラムを展開する方法について説明します。このアプローチは、6つの柱からなるフレームワークに基づいています。すなわち、さまざまな形態のMFAの実行可能性を判断すること、MFAオプションのマルチモーダルな展開を可能にすること、採用を奨励すること、すべてのサービスとアクセスチャネルでMFAをサポートすること、サポートプロセスを設計すること、MFAが消費者と企業の両方に追加のセキュリティを提供できるような信頼できる環境を構築することです。
 
-Keywords: MFA, Multifactor Authentication, 2FA, Two-Factor Authentication, Strong Authentication, SCA, Human-Centric Design, Usability, UX
+キーワード: MFA, Multifactor Authentication, 2FA, Two-Factor Authentication, Strong Authentication, SCA, Human-Centric Design, Usability, UX
 
-How to Cite: Kaushik N., (2020) “Designing MFA for Humans”, IDPro Body of Knowledge 1(3).
+引用の仕方: Kaushik N., (2020) “Designing MFA for Humans”, IDPro Body of Knowledge 1(3).
 
-PUBLISHED ON 30 OCT 2020
+2020年10月30日発行
 
-PEER REVIEWED
+査読付き
 
-LICENSE CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL-NODERIVS 4.0
+ライセンス CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL-NODERIVS 4.0
 
-Designing MFA for Humans
+人間のためのMFAをデザインする
 
 By Nishant Kaushik
 
 © 2020 IDPro, Nishant Kaushik
 
-# Introduction - Designing MFA For Humans
+# イントロダクション - 人間のためのMFAをデザインする
 
-If every year is The Year of PKI, then when exactly was The Year of Two-Factor Authentication? Was it 2012, when the epic hacking of Mat Honan highlighted just how vulnerable all of our digital lives are? 1 , 2 , 3 , 4 Was it 2014, when the even higher profile iCloud leaks of celebrity photos pushed various consumer services to rush offering two-factor authentication an option available to users? 5 Or did it really arrive in 2018, at least for financial institutions, when PSD2 delivered a regulation with some real teeth? 6 , 7
+毎年がPKIの年だとしたら、二要素認証の年はいつ頃だったのでしょうか？2012年は、Mat Honan氏の大規模なハッキング事件で、私たちのデジタルライフがいかに脆弱であるかが浮き彫りになった年だったでしょうか？1 , 2 , 3 , 4 有名人の写真がiCloudに流出したことにより、様々な消費者サービスが二要素認証をユーザーが利用可能なオプションとして提供することを急ぐようになった2014年だったでしょうか？5 それとも、少なくとも金融機関にとっては、PSD2が本格的な規制を提供した2018年に本当に到来したのでしょうか？6 , 7
 
-## Terminology
+## 専門用語
 
-* Adaptive Authentication - Adaptive authentication aims to determine and enforce the authentication level required at any time during a user session - when the session is commenced, during the session when access requirements force a re-evaluation, or when the session token expires. The factors to be used in achieving that authentication level are determined dynamically based on the access control policy governing the resources being accessed, and a variety of environmental conditions and risk factors in effect at that time for that user.
+* アダプティブ認証 - アダプティブ認証は、セッションが開始されたとき、アクセス要件が再評価を必要とするセッション中、またはセッショントークンの有効期限が切れたときなど、ユーザーセッション中のいつでも必要とされる認証レベルを決定し、強制することを目的としています。この認証レベルを達成するために使用される要素は、アクセスされるリソースを管理するアクセス制御ポリシー、およびその時点でそのユーザーに有効な様々な環境条件やリスク要因に基づいて動的に決定されます。
 
-* Account Takeover - Account takeover is a form of identity theft and fraud, where a malicious third party successfully gains access to a user’s account credentials.
+* アカウントの乗っ取り - アカウントの乗っ取りは、悪意のある第三者がユーザーのアカウント資格情報へのアクセスに成功することで、ID 窃盗および詐欺の一形態です。
 
-* Continuous Authentication - Continuous authentication is a mechanism that uses a variety of signals and measurements to determine during a user session if there is any change in the confidence that it is still the same user that authenticated at the beginning of the session, and trigger an authentication action if there is a drop in confidence.
+* 継続的認証 - 継続的認証とは、さまざまな信号や測定値を使用して、ユーザーセッション中に、セッションの最初に認証したユーザーと同じユーザーであることの信頼度に変化があるかどうかを判断し、信頼度が低下した場合に認証アクションを起動するメカニズムです。
 
-* PSD2 - PSD2 (the Revised Payment Services Directive, Directive (EU) 2015/2366) is an EU Directive, administered by the European Commission (Directorate General Internal Market) to regulate payment services and payment service providers throughout the European Union (EU) and European Economic Area (EEA). It contains many requirements specifically related to Strong Client Authentication.
+* PSD2 - PSD2（Revised Payment Services Directive, Directive (EU) 2015/2366）は、欧州連合（EU）および欧州経済領域（EEA）全体の決済サービスおよび決済サービスプロバイダを規制するために、欧州委員会（Directorate General Internal Market）によって運営されているEU指令である。この指令には、特に強力なクライアント認証に関連した多くの要件が含まれています。
 
-* Social Engineering - Social engineering is a method of manipulating people so they give up confidential information, such as passwords or bank information, or grant access to their computer to secretly install malicious software.
+* ソーシャルエンジニアリング - ソーシャルエンジニアリングとは、パスワードや銀行情報などの機密情報を明かしたり、コンピュータへのアクセスを許可して悪意のあるソフトウェアを密かにインストールさせたりするように人々を操作する方法です。
 
-* Step-Up Authentication - A method to increase the level of assurance (or confidence) the system has regarding a user’s authentication by issuing one or more additional authentication challenges, usually using factors different from the one(s) used to establish the initial authenticated session. The need for increasing the level of assurance is typically driven by the risk associated with the sensitive resource the user is attempting to access.
+* ステップアップ認証 (Step-Up Authentication) - 通常、最初の認証セッションの確立に使用されたものとは異なる要素を使用して、1つまたは複数の追加の認証チャレンジを発行することで、システムがユーザーの認証に関して持つ保証レベル (または信頼度) を向上させる方法。保証レベルを向上させる必要性は、通常、ユーザがアクセスしようとしている機微なリソースに関連するリスクによって引き起こされます。
 
-* Threat Modeling - Threat modeling is an analysis technique used to help identify threats, attacks, vulnerabilities, and countermeasures that could impact an application or process.
+* 脅威のモデリング - 脅威のモデリングは、アプリケーションやプロセスに影響を与える可能性のある脅威、攻撃、脆弱性、および対策を特定するために使用される分析技術です。
 
-* Two-Factor Authentication (2FA) - A specific case of Multi-Factor Authentication (see: IDPro’s Consolidated Terminology ) where two factors must be checked to validate a user’s identity.
+* 二要素認証(2FA) - 多要素認証の特定のケース(参照: IDProの統合用語)で、2つの要素がユーザーの身元を確認するためにチェックされなければならない。
 
-## The Struggle is Real
+## 闘争は現実
 
-Two-factor authentication (2FA) is not new. IAM practitioners are certainly familiar with it through their professional lives (remember keychains full of hardware tokens?), but organizations still struggle with rolling out 2FA to customers. Why?
+二要素認証（2FA）は新しいものではありません。IAMの実務家は、確かにプロの生活の中でそれをよく知っていますが（ハードウェアトークンでいっぱいのキーチェーンを覚えていますか？なぜでしょうか？
 
-![A close up of a cell phone Description automatically generated](https://bok.idpro.org/article/id/49/image1.jpg)
+![携帯電話のクローズアップ 説明が自動的に生成されます。](https://bok.idpro.org/article/id/49/image1.jpg)
 
-Figure 1: Remember carrying these?
+Figure 1: これを持っているのを覚えていますか？
 
-The simple reason is that while employees are a captive audience that will submit to whatever painful, inconvenient mechanism they are forced to adopt (ok, except for mobile device management on their personal phones), customers are a different story. The customer experience matters, and if it is not done well, people are either not going to enable it (when it is optional), will work their way around it, or decide not to engage at all.
+単純な理由は、従業員がどんな苦しくて不便なメカニズムを強制的に採用させられても（個人の携帯電話のモバイルデバイス管理を除いて）、それに従う囚われの身である一方で、顧客は別の話だからです。顧客体験は重要であり、それがうまく行われていなければ、人々はそれを有効にしようとしない（オプションである場合）か、それを回避するように努力するか、あるいは全く関与しないことを決定するだろう。
 
-For any organization starting down the path of implementing 2FA, it can be confusing and challenging. They find an extensive list of factors spread across the “something you ___” categories, but little guidance on how to put a good 2FA scheme in place. It’s like getting all the parts in a model kit, but without the instruction manual.
+2FA の導入を始めようとしている組織にとって、2FA の導入は混乱を招き、困難なものになります。組織は、「あなたが○○すること」のカテゴリに広がる要因の広範なリストを見つけることができますが、適切な 2FA スキームを導入する方法についてのガイダンスはほとんどありません。それは、モデルキットに入っているすべての部品を手に入れるようなものですが、取扱説明書がないのです。
 
-![An image showing options for various factors: Something You know (Knowledge), including password, personal information KBA, dynamic KBA, PIN, Security Questions KBA); Something you Have (Possession), including TOTP Hard Token, OTP via Email, OTP via SMS, token/cookie, device (mobile), push notification, TOTP soft token, code cards, security keys, cryptographic authentication; Something You Are (inherence) , including Fingerprint, Voice recognition, face recognition](https://bok.idpro.org/article/id/49/image2.jpg)
+![様々な要素のオプションを示すイメージ。あなたが知っているもの（知識）：パスワード、個人情報KBA、ダイナミックKBA、PIN、セキュリティ質問KBAを含む、あなたが持っているもの（所持）：TOTPハードトークン、電子メールによるOTP、SMSによるOTP、トークン/クッキー、デバイス（モバイル）、プッシュ通知、TOTPソフトトークン、コードカード、セキュリティキー、暗号化認証を含む、あなたがいるもの（継承）：指紋、音声認識、顔認証を含む](https://bok.idpro.org/article/id/49/image2.jpg)
 
-Figure 2: A vast menu to choose from
+Figure 2: 選べる豊富なメニュー
 
-Most organizations simply end up taking the approach of picking an additional factor that they can simply tack on to the end of their password authentication step, and then call it a day. Unfortunately, that simplified approach falls far short of successfully addressing the problem, resulting in continued breach vectors, brittle infrastructure, and unsatisfied customers.
+ほとんどの組織では、パスワード認証ステップの最後に追加の要素を追加して、その日のうちに終了させるというアプローチをとっています。残念ながら、この単純化されたアプローチでは、問題にうまく対処することができず、違反の原因となるベクトル、脆弱なインフラ、そして顧客の満足度が低い状態が続くことになります。
 
-## Thinking in Factors
+## 要因で考える
 
-Multi-factor authentication (MFA) aside, the goal of any authentication framework is to validate that the returning person (or thing) is the same one that the system saw last time, to the required level of assurance . That last part is what makes authentication difficult to implement well. Measuring the assurance of authentication is subjective, and cannot be normalized across organizations, industries, or end-user communities since a critical element in evaluating the assurance of authentication is trying to determine how easy or likely it is for an adversarial party to get around it. Determining this correctly requires doing threat modeling and risk analysis (more on that later), and then translating this into how to authenticate in different contexts.
+多要素認証 (MFA) はさておき、認証フレームワークの目的は、戻ってきた人 (または物) が前回システムが見たものと同じものであることを、必要なレベルの保証で検証することです。この最後の部分が、認証の実装を難しくしています。認証の保証を評価する上で重要な要素は、敵対者が認証を回避するのがどれだけ簡単か、あるいはその可能性が高いかを判断することであるため、認証の保証を測定することは主観的なものであり、組織、業界、またはエンドユーザ・コミュニティの間で正規化することはできません。これを正しく判断するには、脅威のモデル化とリスク分析（これについては後述）を行い、これをさまざまな文脈での認証方法に変換する必要があります。
 
-This requirement for assurance is where factors of authentication become relevant. Factors make the abstract concrete by giving the authentication framework something tangible to evaluate, invoke, and measure. An important evolution that has happened is the realization that not all factors are created equal . This realization has expanded the kind of factors that can be used, while also creating the understanding that the same level of authentication assurance can be achieved using different sets of factors that are not numerically the same (i.e., one set of 2 factors can achieve the same level of assurance as a different set of 4 factors). The requirements around assurance are helping drive the discussion away from 2FA and towards MFA .
+この保証への要求は、認証の要因が関係してくるところです。要因は、認証フレームワークに、評価、呼び出し、測定するための具体的なものを与えることで、抽象的なものを具体的なものにします。起こった重要な進化は、すべての要因が同じように作られるわけではないという認識です。この実現により、使用できる要因の種類が拡大されただけでなく、数値的に同じではない異なる要因のセットを使用しても、同じレベルの認証保証を達成できるという理解が生まれました（例えば、2 つの要因の 1 セットでは、4 つの要因の異なるセットと同じレベルの保証を達成することができます）。保証に関する要件は、議論を 2FA から MFA に向けて推進するのに役立っています。
 
-One important consideration that overshadows all of this is the nature of the factors and their impact on the user experience. When authentication factors translate into explicit challenges (or “active” factors) that an end-user has to engage with (as opposed to “passive” factors that work silently in the background), then the impact on usability will drive organizations to try and reduce the number of factors used in the authentication process. One way that they can compensate is to invoke additional (active) factors when the risk associated with the access request is elevated (often called step-up authentication or adaptive authentication ). An even more refined approach to evaluating authentication assurance and risk is continuous authentication , which recognizes that the assurance level degrades over the life of the user session given how identity or access information may change during the session, and that passive factors can be used to constantly measure any changes or degradation to that assurance level, and determine if step-up authentication is required to bump the assurance level back up.
+これらすべての要素の影に隠れている重要な考慮事項の1つは、要素の性質とユーザー・エクスペリエンスへの影響です。認証要因がエンドユーザーが関与しなければならない明確な課題（または「能動的」要因）に変換された場合（バックグラウンドで静かに動作する「受動的」要因とは対照的）、ユーザビリティへの影響を考慮して、認証プロセスで使用される要因の数を削減しようとする組織が出てきます。これを補う方法の 1 つは、アクセス要求に関連するリスクが高まった場合に、追加の（能動的な）要因を呼び出すことです（ステップアップ認証または適応認証と呼ばれることが多い）。認証の保証とリスクを評価するためのさらに洗練されたアプローチとして、継続的認証があります。これは、セッション中に ID やアクセス情報がどのように変化するかを考慮して、保証レベルがユーザセッションの期間中に低下することを認識し、受動的な要因を使用して保証レベルの変化や低下を常に測定し、保証レベルを元に戻すためにステップアップ認証が必要かどうかを判断することができます。
 
-In all of these approaches, the factors of authentication are the control vector that allows the authentication framework to measure, achieve, and maintain the assurance level of the authenticated session as required by the business.
+これらのアプローチのすべてにおいて、認証の要因は、認証フレームワークが、ビジネスが要求する認証セッションの保証レベルを測定し、達成し、維持することを可能にする制御ベクトルである。
 
-# A Framework for Designing Your MFA Schema
+# MFAスキーマをデザインするためのフレームワーク
 
-MFA has become an imperative across industries, user bases and threat models, and the challenges and practices described below apply equally to both small and large organizations. It lays out a basic framework to build an MFA program that should prove useful to product teams, employees, and clients. This framework is built on six pillars that address the challenge of balancing security, usability and privacy.
+MFA は、業界、ユーザベース、脅威モデルを問わず必須のものとなっており、以下に説明する課題と実践は、小規模な組織にも大規模な組織にも等しく適用されます。本書は、製品チーム、従業員、および顧客にとって有用であることを証明するべき MFA プログラムを構築するための基本的なフレームワークを示しています。このフレームワークは、セキュリティ、ユーザビリティ、およびプライバシーのバランスをとるという課題に取り組む 6 つの柱に基づいています。
 
-## 1. Viability
+## 1. 実行可能性
 
-The first pillar of that framework is Viability . When going through the long list of factors possible, implementors and decision makers must assess which of those factors is viable for their MFA scheme. Assessing viability has multiple considerations:
+このフレームワークの第一の柱は、「実行可能性」である。実施者や意思決定者は、可能性のある要因の長いリストを検討する際に、その中のどの要因が MFA スキームにとって実行可能であるかを評価しなければならない。実行可能性の評価には、複数の考慮事項がある。:
 
-* User Acceptance: Think of the people that make up your user base, and what factors they’d be willing to accept and use.
+* ユーザーの受容。ユーザーベースを構成している人たちが、どのような要因で受け入れて利用してくれるのかを考えてみましょう。
 
-* Cost: Think about the cost of the factor, and whether that is a cost that the business will bear, or the customer will bear. Hardware tokens are great, but expensive. Is the business buying it for their customers, or are they expecting the customer to buy it themselves?
+* コストのこと。要因のコストについて考え、それがビジネスが負担するコストであるか、顧客が負担するコストであるかどうかを考えてください。ハードウェアトークンは素晴らしいですが、高価です。ビジネスは彼らの顧客のためにそれを買っているか、彼らはそれを自分自身を購入するために顧客を期待していますか？
 
-* Threat Model: Consider the threat model associated with the factor. A USB device can be a very secure authentication factor, where the user has to plug the key into a port on their desktop in order to authenticate. But research studies have shown that people will often leave them plugged into their desktop even when they leave the office, virtually negating its assurance as a possession factor. Discussing this in detail is out of scope for this article, but do note that there is a need to introduce threat modeling as a core discipline in identity management.
+* 脅威モデル。ファクターに関連する脅威モデルを検討してください。USB デバイスは、ユーザーが認証するためにデスクトップ上のポートにキーを差し込むという、非常に安全な認証ファクタになります。しかし、調査研究によると、人々はオフィスを離れてもUSBデバイスをデスクトップに差し込んだままにしておくことが多く、事実上、USBデバイスを所有しているという保証を否定しています。これについて詳しく議論するのはこの記事の範囲外であるが、ID 管理の中核的な規律として脅威モデルを導入する必要性があることに注意すること。
 
-* Effectiveness: Consider the effectiveness of the factor. For example: security questions, a widely deployed form of MFA, are universally acknowledged as being ineffective in this age of public social media profiles and social engineering threats.
+* 効果を考える。要因の有効性を検討する。例：MFAの広く展開されているセキュリティ質問は、ソーシャルメディアのプロフィールが公開され、ソーシャルエンジニアリングの脅威にさらされている今の時代には、効果がないと普遍的に認められています。
 
-* Regulatory Compliance: In many cases, regulatory compliance can enter the equation, since regulators are increasingly rendering opinions on which factors are acceptable for different industries.
+* 規制遵守。多くの場合、規制当局が異なる業界でどの要素が許容されるかについて意見を述べることが多くなっているため、規制遵守が方程式に入ることがあります。
 
-## 2. Multimodal
+## 2. マルチモーダル
 
-The second pillar of the framework is Multimodal . When implementing 2FA, the goal is to have each user employ at least two factors when authenticating. However, that does not mean that the business should only support two factors. Not all factors work for all users, and when a business is trying to increase the number of customers turning on MFA, they must offer options (i.e., be multimodal) that work with their vast and diverse user base. The idea that they can find two factors that work for everyone leads them to a least common denominator approach, and that’s how so many industries have ended up with SMS OTP as the de facto “standard” in MFA, and a weakening of the security model. 8
+フレームワークの 2 番目の柱は、Multimodal である。2FA を実装する場合、目標は、各ユーザが認証時に少なくとも 2 つの要素を採用することである。しかし、それは、ビジネスが2つの要因だけをサポートすべきであるという意味ではありません。すべての要因がすべてのユーザーに対応するわけではなく、ビジネスが MFA を利用する顧客の数を増やそうとしている場合、膨大で多様なユーザーベースに対応するオプションを提供しなければなりません（すなわち、マルチモーダルでなければなりません）。誰にでも通用する2つの要素を見つけることができるという考えは、最小公約数アプローチにつながり、多くの業界がSMS OTPをMFAの事実上の「標準」とし、セキュリティモデルを弱体化させることになっています。8
 
-A hand holding a cellphone Description automatically generated
+![携帯電話を持つ手 説明 自動生成](https://bok.idpro.org/article/id/49/image3.jpg)
 
-![A hand holding a cellphone Description automatically generated](https://bok.idpro.org/article/id/49/image3.jpg)
+Figure 3: 人それぞれ筆が違う
 
-Figure 3: Different strokes for different folks
+選択肢を提供することで、ビジネスはエンドユーザーの様々な能力、嗜好、および状況に対応することができ、顧客を疎外し、しばしばセキュリティを弱める「ワンサイズ・フィット・オール」のアプローチを避けることができます。
 
-Offering choice allows a business to address the varying capabilities, preferences, and circumstances of their end-users, and avoid a “one size fits all” approach that alienates customers and often weakens security.
+マルチモーダルであることは、認証プラットフォームがリスクだけでなく、ユーザの能力にも適応できるようになることを必然的に必要とします。この適応能力を高めるためには、認証サービス/プラットフォーム/プロバイダがインテリジェントなユーザーフローを作成する必要があります。9
 
-Being multimodal will necessarily require the authentication platform become adaptive, not just to risks, but also to user (cap)abilities. This ability to adapt will require the authentication service/platform/provider to create intelligent user flows – a concept commonly being referred to as orchestration. 9
+## 3. 養子縁組
 
-## 3. Adoption
+3 つ目の柱は、最も誤解されているもの、つまり「採用」です。現実には、ビジネスが MFA を義務付けることができる企業環境とは異なり、顧客環境では、エンドユーザに MFA の使用を開始するように説得する必要があります。このパターンの受け入れは増加していますが、一般的には、これは言うは易く行うは難しです。10
 
-The third pillar is the one that is the most misunderstood - Adoption . The reality is that unlike enterprise environments where the business can mandate MFA, the customer environment requires a business to convince their end-users to start using MFA. While acceptance for this pattern is growing, in general this is easier said than done. 10
+組織は、特にMFAスキームを設計する際には、UXリサーチをIAMプログラムの中核的な要素とする必要があります。これは、ビジネスが採用を促進するためにロールアウト計画に組み込まなければならない適切なメッセージング、トレーニング、インセンティブのコンポーネントのセットを作成するための重要かつ基礎的な要素です。11
 
-Organizations need to make UX research a core element of their IAM program, especially as they design their MFA scheme. It is a critical and foundational element to creating the right set of messaging, training, and incentive components that the business will have to incorporate into their rollout plan to drive adoption. 11
+## 4. オムニチャネル
 
-## 4. Omnichannel
+MFA を設計する際に見落とされがちな柱は、オムニチャネルです。企業は、MFAがウェブやモバイルチャネルだけに適用されるべきではなく、顧客に接するすべてのチャネルに展開されなければならないことを認識していないことがよくあります。これは、マルチモーダリティの柱に関連しています。企業は、ウェブ、モバイル、コールセンター、対面、チャット、スマートホームアシスタントなど、多くのチャネルで顧客やパートナーと関わっていますが、各チャネルは通常、エンドユーザーを認証するための全く異なる方法をもたらします。
 
-An overlooked pillar when designing MFA is Omnichannel . Businesses have often failed to recognize that MFA should not apply just to their web or mobile channels; they must be deployed across all their customer-facing channels. This ties back to the pillar on multimodality. Businesses are engaging with customers and partners across many channels – web, mobile, call center, in-person, chat, smart home assistants, and more - and each channel usually brings a completely different way of authenticating the end-user.
+この一貫性のなさは、エンドユーザーをイライラさせ、顧客担当者やIT担当者の頭痛の種となり、悪者を喜ばせます。攻撃者は、これらのチャネルの中で最も弱いリンクを探し、そのチャネルの弱点だけでなく、顧客や従業員が感じるフラストレーションを利用して、そのチャネルを狙うのです。その結果、アカウント乗っ取り攻撃や詐欺が横行します。このビデオでは、カスタマーサービスの認証プロセスの弱点を突いてアカウントを乗っ取る典型的なソーシャル・エンジニアリング攻撃をご覧ください。
 
-This inconsistency frustrates end-users, creates a headache for customer-facing staff and IT staff, and delights bad actors. Attackers look for the weakest link across those channels, and go after that one, exploiting not only the weakness of the channel but also the frustration that customers and employees feel. The result is rampant account takeover attacks and fraud. Watch this video of a classic social engineering attack that exploits weaknesses in the customer service authentication process to take over an account.
+今日のビジネスには、さまざまな認証モデルが混在する一貫性のないごった煮状態から脱却し、さまざまなチャネルでセキュリティレベルの一貫性と平等性を実現することが急務となっています。
 
-Businesses today have a pressing imperative to transition away from an inconsistent hodge-podge of varying authentication models and bring some consistency and equality of security levels across their various channels.
+## 5. プロセス
 
-## 5. Processes
+frameworkの第5柱はほとんどの組織がに十分な注意を払わない1つである。プロセスです。個々の顧客のためのMFAを可能にし、維持することは多くの異なったプロセスを含み、それぞれが適切に設計される必要がある。:
 
-The fifth pillar of the framework is the one that most organizations do not pay enough attention to: Processes . Enabling and maintaining MFA for individual customers involves many different processes, each of which needs to be properly designed:
+* 登録: 登録プロセスに欠陥がある場合、MFA の保証は最初から疑わしいものとなります。多くの組織では、ユーザーが最初の認証のみを使用して認証した後に、2つ目の要素を設定することを許可しており、これは全体的なセキュリティスキームにおける大規模な脆弱性のポイントです。
 
-* Enrollment : If the enrollment process is flawed, the assurance of your MFA is suspect from the very beginning. Many organizations will allow users to set up their second factor after they have authenticated solely using their first, and that is a massive vulnerability point in the overall security scheme.
+* バックアップ／代替手段 . そのため、ビジネスは、顧客が追加の認証機 能をバックアップとして設定することを許可するだけでなく、積極的に奨励する方法を考えなければなりません。また、これらのバックアップはプライマリと同じ強度を持っていなければなりません。
 
-* Backup / Alternate : No authentication factor is immune from loss or destruction, so the business has to think about ways to not only allow, but proactively encourage, customers to set up additional authenticators as backups. And those backups must have the same strength as the primary; otherwise, this creates a backdoor for attackers.
+* 脱出経路 : すべての認証要素が常に利用できるわけではなく、代替メカニズムが利用できない場合があります。建物の一部や飛行機の中など、信号が届かない場所で作業をしている人のために、プッシュ通知ベースの認証がどうなるかを考えてみましょう。バックアップとして使用しているFIDOセキュリティ・キーをオフィスの引き出しに安全にロックしたままにしておいたとしても、問題外ではありません。このような状況下で鍵をかけてしまうことは、非常に問題があり、回避策として悪用される可能性があります。脱出経路は、すべての状況で適切なものではないかもしれませんが、システムに設計すべきかどうかを慎重に検討してください。
 
-* Escape Paths : Not all authentication factors are always available for use, and the alternate mechanism may not be available. Consider what happens to push notification-based authentication for someone working in a part of the building, or on a plane, where they get no signal. It is not out of the question that they left their FIDO security key that they use as a backup safely locked in their office drawer. Locking them out under those circumstances can prove to be hugely problematic and result in workarounds that open up exploitation vectors. Escape paths may not be appropriate in all circumstances; consider carefully whether they should be designed into your system.
+* リカバリ：認証要素を失ったエンドユーザーが永久にロックアウトされるという悲惨な結果に直面しないように、ビジネスが認証要素を失ったエンドユーザーをどのようにサポートするかを検討してください（所有者が秘密鍵を含むハードウェア・トークンを失ったために、ビットコイン・ウォレットが回復不能にロックアップされたという恐ろしい話を考えてみてください）。リカバリーパスは、悪者のためのバックドアにならないように、適切に設計されなければなりません。リカバリーを行うための検証要素として認証要素を使用してはいけません(例えば、SMS OTP を認証の第二要素として使用し、忘れたパスワードをリセットする方法としても使用しているすべてのサービス)。これは、2FA スキームを 1 要素認証スキームに変えるバックドアを効果的に作成します。
 
-* Recovery : Consider how the business will support an end-user that has lost their authentication factor(s), so that they are not faced with the dire consequence of being permanently locked out (think of all the horror stories of bitcoin wallets irrecoverably locked up because their owner lost the hardware token containing their private key). Recovery paths must also be designed properly to avoid having them turn into backdoors for bad actors. Never use an authentication factor as the verification factor for also doing recovery (e.g., every service that uses SMS OTP as a second factor of authentication, and also as a way of resetting a forgotten password). This effectively creates a backdoor that turns a 2FA scheme into a one-factor authentication scheme.
+* Deprovisioning : もちろん、ビジネスは、顧客が利用できなくなった、あるいは脆弱性や問題点が発見されたためにビジネスに受け入れられなくなった要因を無効にする方法を検討しなければなりません（それが個人レベルであるか、システム全体であるかは別として）。
 
-* Deprovisioning : Of course, the business must to consider how to invalidate a factor that is no longer available to the customer, or is no longer acceptable to the business because of vulnerabilities or issues discovered in it (whether it be at an individual level or system wide).
+重要なことは、脱出経路と回復フローは、それらに関連したより高いリスクを伴う例外として扱われる必要があるということである。それは、それらのフローのリスク評価とセキュリティを高めることを意味し、多くの場合、摩擦を追加することを意味します。このような状況では、顧客は（ビジネスが適切な説明を提供していれば）これらのパスの精査の増加を理解していることが多いことを覚えておくことが重要である。これらの例外フローのために出現した技術の 1 つは、これらのシナリオで ID 検証ツール（文書ベースの ID 証明など）を使用することである。
 
-Importantly, escape paths and recovery flows need to be treated as exceptions with higher risks associated with them. That implies increasing the risk evaluation and security of those flows, which often means adding friction. It is important to remember that in these circumstances, customers will frequently be understanding of the increased scrutiny in those paths (provided the business offers adequate explanations). One of the techniques emerging for these exception flows is the use of identity verification tools (e.g., document-based identity proofing) in these scenarios.
+## 6. 信頼できる環境
 
-## 6. Trusted Environment
+フレームワークの 6 番目の最後の柱は、MFA を実行するための信頼された環境を確立することです。これらの要素が受け入れられ、保存され、送信され、評価されている環境が危殆化され、盗まれたり、操作されたり、再生されたりしては、ビジネスの認証要素がどれだけ優れていても、強力であっても意味がありません。秘密をキャプチャするキーロガー、SMS コードを傍受したりキーを盗んだりするマルウェアアプリ、悪意のある WiFi、リバースプロキシ、認証情報やトークンをキャプチャして再生する不正なセルタワーなどの脅威は、MFA の有効性を低下させ、これらの要因に対する組織の信頼性を低下させます。すべての多要素認証プロジェクトは、認証の要素を活用するだけでなく、使用されているデバイスやハードウェアの健全性、信頼されているネットワーク、その他のリスクのシグナルにも目を向け、（できれば）顧客を認証するという単純な行為に対する信頼を構築するために、徹底した防御（業界用語では、ゼロトラスト・セキュリティ）を実施する大規模なセキュリティ・プログラムの一部でなければなりません。
 
-The sixth and final pillar of the framework is establishing a Trusted Environment within which to execute MFA. It will not matter how good or strong a business’s factors of authentication are if the environment within which those factors are being accepted, stored, transmitted, and evaluated is compromised, allowing them to be stolen, manipulated, or replayed. Keyloggers that capture secrets, malware apps that intercept SMS codes or steal keys, malicious WiFi, reverse proxies, and rogue cell towers that capture and replay credentials or tokens – threats like these reduce the effectiveness of MFA and degrade organizational trust in those factors. All multi-factor authentication projects must be part of a larger security program that enforces defense-in-depth (or, to use the industry term du jour, zero-trust security ) to not only leverage the factors of authentication, but also look at the health of the devices and hardware being used and the networks being relied upon, as well as other signals of risk, in order to build trust in (hopefully) the simple act of authenticating your customer.
+## 結論
 
-## Conclusion
+このフレームワークは、ユーザーにとって強力で使い勝手の良い MFA サービスを展開するためのガイダンスを提供する。要因の実行可能性、マルチモーダルサポート、採用率、オムニチャネルの適用可能性、信頼された環境を保証するインフラストラクチャの検討は、どのセクターのどの組織にも適用され、MFAプログラムの設計、構築、ロールアウトのすべての段階で考慮されるべきである。
 
-This framework offers guidance for rolling out a strong and usable MFA service for their users. The considerations of factor viability, multimodal support, adoption rates, omnichannel applicability, and the infrastructure that guarantees a trusted environment, applies to any organization in any sector, and should be considered at every stage -- designing, building, and rollout – of any MFA program.
+すべての認証が強力であり、すべての顧客が幸せで、従事し、保護されますように。
 
-May all your authentications be strong, and all your customers be happy, engaged, and protected.
+[この記事はEIC、Identiverse、Identiverse、Identity Weekでの私の講演を基にしています。Identiverseの講演はこちらからご覧いただけます。]
 
-[This article is adapted from my talks at EIC, Identiverse, and Identity Week. You can watch the Identiverse talk here .]
+## 著者バイオ
 
-## Author Bio
-
-A person wearing glasses and looking at the camera Description automatically generated Nishant Kaushik is the CTO of Uniken, the first security platform that tightly integrates identity, authentication and channel security. He brings over 15 years of experience in the identity management industry architecting and delivering market leading products, with stints at Thor Technologies, Oracle, SCUID and CA Technologies. His current role allows him to focus on his latest passion of solving the user experience problem in delivering exceptional security by leveraging identity. Nishant is a recognized thought leader and notorious photoshopper of the identirati, regularly speaking at conferences and provoking discussion through his blog (blog.talkingidentity.com) and on twitter (@NishantK).
+Nishant Kaushik氏は、アイデンティティ、認証、チャネルセキュリティを強固に統合した初のセキュリティプラットフォームであるUnikenのCTOです。彼は、Thor Technologies、Oracle、SCUID、CA Technologiesでの経験を生かし、15年以上のID管理業界でのアーキテクトと市場をリードする製品の提供の経験を持っています。現在は、アイデンティティを活用して優れたセキュリティを提供する上で、ユーザー体験の問題を解決することに情熱を注いでいます。Nishant は、著名な思想的リーダーであり、アイデンティティのフォトショッパーとして知られており、定期的にカンファレンスで講演を行い、ブログ（blog.talkingidentity.com）やツイッター（@NishantK）で議論を喚起しています。
 
 Nishant Kaushik
 

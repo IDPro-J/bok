@@ -32,7 +32,7 @@
 
 ### IAM Architecture and Solutions
 * Introduction to IAM Architecture – Andrew Cameron and Graham Williamson – 2020-06-18
-* Designing MFA for Humans – Nishant Kaushik – 2020-10-31
+* [Designing MFA for Humans – Nishant Kaushik – 2020-10-31](./Designing_MFA_for_Humans.md)
 
 ### Access Control
 * Introduction to Access Control – André Koot – 2020-06-18

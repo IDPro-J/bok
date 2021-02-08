@@ -1,4 +1,5 @@
-Abstract
+## Abstract
+
 As the name implies, Identity and Access Management (IAM) is split into two functions: managing identity information and performing access control. Arguably, if there was no access control requirement there would be no need for identity management. It is therefore the focus for IAM professionals. At its core, access control is ensuring users are authenticated to access protected resources. This is accomplished by managing user entitlements and satisfying the requirements of relying applications so that users can only access the systems and information they are entitled to access. This article looks at the history of access management, the expected current functionality, and the trends to be expected.
 
 Keywords: Access Control, Authorization, Governance, Risk, Authentication, Future
@@ -13,12 +14,13 @@ PEER REVIEWED
 
 LICENSE CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL-NODERIVS 4.0
 
-Introduction to Access Control
+# Introduction to Access Control 
+
 By André Koot
 
 © 2020 IDPro, André Koot
 
-Introduction
+## Introduction
 
 Access Control, as a concept, has a long history. But in order to investigate the current challenges and solutions, let’s start by evaluating a very old, traditional model of classified government documents.
 
@@ -62,7 +64,7 @@ Apart from the concepts of access control, ownership in itself is a complex topi
 
 There can be many more criteria to identify the owner, but this is part of Data Governance and out of scope for this article. In the case of medical files, the object, the patient, has several inherent rights to the data, making this person partly accountable for the access decision. The concept of shared responsibility for access control will be explained in a separate article about Access Governance in the IDPro BoK.
 
-Terminology
+## Terminology
 
 * Identification – Uniquely establish a user of a system or application.
 
@@ -96,7 +98,7 @@ Terminology
 
 * Policy Information Point – The authority that refers to the (external) trusted providers of attributes that will be used in the Access Decision. An example is the myacclaim.com service that administers Open Badges of certifications, such as CISSP and MSCP.
 
-Acronyms
+## Acronyms
 
 * ABAC – Attribute-Based Access Control
 
@@ -130,19 +132,19 @@ Acronyms
 
 * SoD – Segregation of Duties
 
-AAA: Authentication, Authorization, Accountability
+# AAA: Authentication, Authorization, Accountability
 
 Just as we showed in the classified document example above, in order to get access, a validated identity is key. The ideas behind this paradigm can be summarized by the concepts of AAA.
 
-Authentication
+## Authentication
 
 Authentication is the process of proving that the user with a digital identity who is requesting access is the rightful owner of that identity. It can be as simple as using a password, or complex as providing a digital certificate. Both the Access Supplier and the Access Requester must be able to manage and consume the results of the authentication process.
 
-Challenge - Response
+### Challenge - Response
 
 The user might provide proof of this rightful usage by providing a secret that only the access requester and the access supplier know, like a secret code or a password. The underlying mechanism is called Challenge-Response. The Access Supplier challenges the Access Requester to prove his or her identity, and the subject will have to respond in the way the Access Supplier expects. The simplest way to do challenge-response is by asking for a password or pin-code. But also the CAPTCHA feature on many websites is a form of challenge-response: prove that you are a human being. 4
 
-Knowledge – Possession - Being
+### Knowledge – Possession - Being
 
 But other than a CAPTCHA challenge, a known secret can be shared. It may not be sufficient to assure the rightful access, because by sharing a password, or by finding a password lying around (on a post-it note for instance), others may pretend to be the rightful owner. This weakness of the known-secret model means that the trust level of an access requester who uses just a password may not be sufficient for some applications.
 
@@ -150,53 +152,53 @@ After identification and even authentication, there is a degree of uncertainty i
 
 Adding more proof of identity can be done by demanding more specific and unique identifiers, proofs of identity. These more trusted authentication means cannot be easily copied, or easily shared or stolen (it is not impossible, but the cost of copying a secure physical token can be too high to make it economically unsound to forfeit). In practice, this is done by introducing additional factors, such as tokens, certificates, biometric proof. Requesting these additional proofs of identity can be requested either at the start of a session at the first authentication or during a session after a previous low-trust authentication has been found insufficient for getting access to a secured resource. In this case, the low-trust access can be enhanced by performing a ‘step-up’ authentication, requiring the additional factors: the first step during login could be using a password, and then a second higher-level step could involve use of a token or biometric proof.
 
-Authorization
+## Authorization
 
 Authorization, often a synonym to the phrase access control, is the next step in getting access after the phase of authentication. It is the act of granting access to a specific resource, such as a computer application or a specific function within an application.
 
 Authorization is closely related to the concept of Authority. Someone, such as an owner, is accountable and, because of the ownership, is mandated to authorize others to access the protected resource. This accountability does not imply that the other person becomes the owner, but it does mean that several permissions, such as ‘read’ or ‘delete,’ can be executed. The owner stays accountable throughout the lifecycle of the data. Some of the tasks of the owner can be delegated to others in such a way that, for instance, a line manager may, within the boundaries set by the owner, grant read access to a resource to an employee.
 
-Mainstream Access Control Methods
+### Mainstream Access Control Methods
 
 Currently, many organizations have security policies embedded in various applications, operating systems, and networking components. These controls are implemented in the form of Access Control Lists (ACLs), Roles, and DAC business rules. But these controls have to be designed and implemented in every relevant component. And these controls have to be designed in a consistent manner. If, for instance, a Segregation of Duties (SoD) restriction is defined for a specific process, every system, application, platform, app, and network component must support the SoD rule. If one of the many components is lacking the SoD control, then the organization is not in control.
 
 This decentralized implementation of security policies makes it challenging to implement centrally managed organization-wide controls. It is likely that not all controls are similar and that the security policy and conformity must be verified for every system or platform access request.
 
-Modern Access Control
+### Modern Access Control
 
 In modern implementations of access control, a policy engine is used to evaluate access policies centrally, and policy enforcement should encompass the ‘risk level’ evaluation. The business process owner, or data owner, tasked with managing access risk, will define the policies for which they are accountable. In some cases, there are multiple ‘business owners,’ and each is responsible for their part of the corporate security policy. This assignment of business owners can result in continuously changing access control policies.
 
 There is much development in this area, with applications no longer maintaining ACLs of users. Instead, they rely on identity management authorization systems that will, based on one or more access policies, make the decision regarding a user’s access request. Different stakeholders in a company are responsible for different policies. All applicable policies must be evaluated before access is granted. This method of fine-grained access control is a type of Mandatory Access Control.
 
-Accountability
+## Accountability
 
 Accountability is a key responsibility in Access Governance. Making sure that every access decision is accounted for by an authorized person implies that ownership must be addressed. The owner must be informed about all activities under their control in order to be successfully accountable for the data under their stewardship.
 
 Registering all activities in access control is an essential quality requirement. This record can vary in complexity from logging every authorization request (like granting or revoking authorizations or roles to and from people) to logging changes of authorizations within roles. The existence of this register is essential to be truly in control of access. The same is true for the identification and authentication process. There must be an assurance from the part of the login mechanism, the operating systems, and the IAM solutions applied to make sure that every access request is validated.
 
-Specific Access Control Considerations
+## Specific Access Control Considerations
 
 Access control is not only a business decision. Other considerations inform how this activity must take place, including how users will engage with the control mechanisms as well as legal implications for what is (and isn’t) required.
 
-The Human Factor
+### The Human Factor
 
 The user who needs to cope with the security controls can themselves be a roadblock on the path toward effective’ control.’ User experience (UX) is a critical success factor in every information security project. If the security controls are too strict, users may be deterred, or they may try to circumvent the control. This avoidance on the part of the user is often seen consumer access: if a customer portal is not built with the focus on the user, then consumers tend to go elsewhere. That is a missed opportunity, resulting in low conversion rates. Consumer Identity and Access Management (CIAM) solutions are developed to prevent this behavior.
 
 The lessons learned in CIAM are also being implemented in workforce IAM: UX starting to make an impact. For instance, if a user accesses a company intranet portal from their home location regularly in a prescribed way, like using a VPN, the access control system could validate this behavior as a factor in the authentication process. It could decide not to require the repeated use of multi-factor authentication since it is a trusted user making use of a known, trusted connection; it’s a well-known context resulting in better control of access.
 
-Legal Implications
+### Legal Implications
 
 Access Control has historically been looked at as a way to support Business Processes and is part of a larger Information Security and risk mitigation policy. The question of legal implications directly tied to Access Control practices varies from business to business, from sector to sector, and from jurisdiction to jurisdiction. There is no unambiguous answer as to the direct legal requirement for most Access Control practices as these policies are often woven into a larger program that is driven in part by any number of laws, regulations, or standards. Part of the role of an Access Control program or system is to ensure that it is flexible enough to support the larger risk management programs of the business or organization. In this way, questions about legal requirements and compliance implications can be addressed organically, allowing the organization the confidence it needs to operate and move forward.
 
 In separate articles in the IDPro BoK, different aspects of laws and regulations will be illustrated in more detail.
 
-Current state of Access Control
+# Current state of Access Control
 
-Mainstream Access Control Mechanisms
+## Mainstream Access Control Mechanisms
 
 Several mechanisms support the implementation of access control. This section covers the more common ones: Access Control Lists (ACLs), Role-based Access Controls (RBACs), and Attribute-based Controls (ABACs).
 
-Access Control Lists - ACL
+### Access Control Lists - ACL
 
 Access control to a protected resource is based on the classification level of the resource. Every resource will be classified by the owner (or a delegated person) in order to define the security level of the resource. Based on the security level, security controls must be put in place to ensure the correct level of access. The access available, i.e., the permissions that can be granted, are also known as entitlements (fine-grained permissions to access resources). One of the earliest and best-known implementations of entitlements is by using Access Control Lists (ACL’s). In an ACL, the owner of the file defines what users can have what type of access: read, write, update, delete, whatever the owner accepts as usage. This concept is easy to understand and easy to manage for individual objects. And if the number of objects is limited, controlling access via ACL’s can be enough. But when the number of users and the number of objects grows, ACL’s can be a restricting factor.
 
@@ -204,7 +206,7 @@ Every owner of a file will need to define the ACL for the object. This distribut
 
 The concept of ACLs will be explained in a future article in the BoK.
 
-Role-Based Access Control (RBAC)
+### Role-Based Access Control (RBAC)
 
 Managing ACLs can be a tedious task. Managing access to resources on a user by user or entitlement by entitlement basis faces issues as populations grow. At some point, the issue of scale meant that a new access management approach was needed. Role-based Access Control (RBAC) is an approach of granting access to resources on a group level instead of on an individual level. In order to realize this, an intermediate component needs to be in place after that of the Access Controller. A Role Manager or a Role Owner has to be able to map the role of a user to an entitlement to a secured resource. This mapping looks easy enough, but in practice, this means that this person needs to work with different other responsible persons in an organization to make sure that the authorizations are not conflicting with the business processes and organizational structures of the organization. In the Access Governance article, this concept and the complexity connected with the governance model is further explained.
 
@@ -216,13 +218,13 @@ In RBAC, we can identify a multilevel role model. On the one hand, we can identi
 
 Implementations, pros, and cons will be explained later in a future article about RBAC in the BoK.
 
-Attribute-Based Access Control (ABAC)
+### Attribute-Based Access Control (ABAC)
 
 Attribute-based Access Controls (ABAC) builds on the RBAC model by introducing additional controls based on business logic. A major failing of the RBAC model is its static nature. Once an entitlement has been granted, it generally is always available to an end-user, until it is manually revoked. This longevity means that users wind up carrying access with them from Role to Role if proper cleanup actions are not taken. To address this, ABAC expands on the model, taking into consideration different characteristics of users and users’ attributes at the moment of determining if access should be granted. As a result, an access management system can make a decision based on the entitlements of a given user, as well as the time of day, the location of the user (e.g., on network or remote, geolocation based on IP address) the type of device (e.g., personal, organization owned, desktop or table), and other worker metadata. ABAC can be used both in real-time to control access at the time of the transaction, or passively controlling the assigned roles and entitlements based on user metadata. Both approaches require strong input and support from resource owners, Role managers, and people or organization managers to understand the needs of the user as well as additional support from analysts to help define the business logic.
 
 For example: The Customer Relations Management process owner could define that everyone with the attribute ‘Business Role = Account manager’ can access the resource only if attribute ‘Allowed Time = defined office hours’. Multiple variations of this dynamic access control philosophy will be described later in a future IDPro BoK article.
 
-The Future Direction of Access Control
+# The Future Direction of Access Control
 
 Access Control by means of ACLs and RBACs is relatively static; the combination between a user and his or her authorizations are set and do not vary easily, and other authorizations require changes. But people move between jobs, change devices, change location, or get new tasks in a new context. Also, the risk level assigned to a protected resource can change because of a change in context or a change in applicable laws and regulations. Relevant changes may include:
 
@@ -240,7 +242,8 @@ Access Control by means of ACLs and RBACs is relatively static; the combination 
 
 These restrictions and changes show that a more dynamic method for managing access is needed. The future direction of Access Control takes this into account, and various developments can be identified.
 
-Dynamic Authentication
+## Dynamic Authentication
+
 Access control is not a static event. When a user starts a session accessing services requiring a low-risk level, then identification with a username and password combination may be sufficient. When later on in the session, another trust level is required. For instance, when performing a transaction, additional identification, like a token, might be needed.
 
 In order to adapt to these session dynamics, authentication in itself should also be a continuous process through, for example, the new concept of behavioral biometrics. Examples of changing needs for trust in the identity:
@@ -251,7 +254,8 @@ A user opens an email attachment, which by itself requires a higher trust level.
 
 Adaptive authentication is a secure, dynamic, and ﬂexible form of authentication. It enables validating multiple factors to determine the authenticity of a login attempt before granting access to a resource. The factors that are used for user validation can depend on the risk associated with granting a particular user access and may involve adjusting the authentication strength based on the actual context.
 
-Policy-Based Access Control (PBAC)
+### Policy-Based Access Control (PBAC)
+
 A dynamic, ﬂexible method is required for access control to become effective and efficient in extended organizations in collaboration environments with a flexible workforce. Policy-based Access Control (PBAC) is the paradigm to provide this flexibility. PBAC, also known as Claims-based Access Control or Content-based Access Control, takes some of the business logic introduced in the ABAC model and enhances it by layering additional context evaluation and dynamic step-up capabilities
 
 The context of an access requester can change dynamically. The dynamic nature of policy management and enforcement could require step-up authentication within a session to cater for the higher trust level needed if the defined risk controls require it. A policy engine will be responsible for checking if the user attributes and context information at the time that access is requested, comply with the access policies defined by the owners of the security policies. Context information might include time of day, geographical location, or device type. The scalability of access is also enabled by making it possible to collect attributes from different trusted and pre-defined attribute providers. As an example: this person can access the Risk Management reports, but only if this person has the CRISC certificate. ISACA provides this certificate, so a lookup in the ISACA registry could answer the question regarding the CRISC certification (the mapping of the Access Requester to the ISACA member is out of scope for this discussion). 8
@@ -260,27 +264,27 @@ The central component in this architecture is Policy Decision Point, which evalu
 
 As a further natural development, AIAC and ReBAC have to be mentioned.
 
-Relation-Based Access Control (ReBAC)
+## Relation-Based Access Control (ReBAC)
 
 A new concept in Access Control is ReBAC, Relation Based Access Control. ReBAC addresses the possibility of making access control decisions using the relationship between the access requester and the other identities who can potentially be affected by the access control decision. These access decisions can be deduced from (amongst other services) social media network relationships of the access requester. An attribute such as ‘reputation’ can be evaluated and considered. ReBAC relies on the availability of large, distinct data sets (incorporating data from HR/Sourcing & Access/entitlement/behavior) and on AI to conduct the evaluations and recommendations for access decisions.
 
 The direction for ReBAC is not yet entirely clear, and the development is not mature enough for mainstream implementation. We foresee the potential for implementation as part of predictive role mining technologies for dynamic ABAC implementations. 9
 
-Artificial Intelligence Supported Access Control (AIAC)
+## Artificial Intelligence Supported Access Control (AIAC)
 
 We can expect much more in this area when we add the concept of Artificial Intelligence (AI). With a robust environment that classifies sensitive resources, it’s now possible to take a sophisticated risk management approach to dynamic access control whereby the identity manager solution will alert on access requests that exceed normal risk levels. AI will also monitor access control requests alerting on out-of-normal activity. As such, it can be an addition to current RBAC and ABAC implementations. This concept is not yet mainstream, and we can hardly predict the direction, but AI and machine learning may add some value.
 
-User Control and Consent
+## User Control and Consent
 
 Privacy laws and regulations create a new awareness of access to Personally Identifiable Information. These laws and regulations have driven the concept of data ownership and consent by customers, employees, or patients. Data owners expect to be in control of their personal information, and in many cases, laws and regulations are mandating this. Several technological platforms have begun to spring up to fill this data ownership gap. Solutions like User-Managed Access, by Kantara Initiative, have made their way in the new access paradigms. Facilitated by the further development of protocols like OAuth, implementation of the concepts is made easier. 10
 
-Conclusion
+# Conclusion
 
 Mainstream Access Control mechanisms like RBAC and ACL’s have a long tail and will continue to have valid use cases in many organizations. However, as companies, governments, and organizations begin to require communications and collaborations outside of their traditional four walls, other ways of controlling access are required.
 
 Mainstream Access Control methods are not able to deliver the growing need for ﬂexible access control in a changing world. Modern Access Governance requires modern access control methods. There is a clear need for Dynamic Access Control. Interestingly, the tools are becoming available, and implementation need not interfere with the current best practices, Adaptive Authentication, and PBAC can be added to an existing identity and access architecture. It takes some planning, based on a roadmap. And of course, it requires implementing elements of Access Governance (as explained in a separate article in the IDPro BoK).
 
-Author Bio
+## Author Bio
 
 André Koot is IAM and Security Consultant at Nixu Benelux and is the IAM Internal Practice Lead within Nixu. His IAM experience comes from a financial accounting and auditing background. This background of anti-fraud detection and prevention business processes led to research in the area of authorization principles.
 

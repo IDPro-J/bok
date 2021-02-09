@@ -1,104 +1,105 @@
-## Abstract
+## 抄録
 
-As the name implies, Identity and Access Management (IAM) is split into two functions: managing identity information and performing access control. Arguably, if there was no access control requirement there would be no need for identity management. It is therefore the focus for IAM professionals. At its core, access control is ensuring users are authenticated to access protected resources. This is accomplished by managing user entitlements and satisfying the requirements of relying applications so that users can only access the systems and information they are entitled to access. This article looks at the history of access management, the expected current functionality, and the trends to be expected.
+その名の通り、IAM（Identity and Access Management）は、ID情報の管理とアクセス制御の実行という2つの機能に分かれている。有利にも、アクセス制御の要件がなければ、アイデンティティ管理の必要性はありません。そのため、IAMの専門家にとっては、これが焦点となっている。アクセス制御の核心は、ユーザーが保護されたリソースにアクセスするために認証されることを保証することである。これは、ユーザーがアクセスする権利を与えられたシステムと情報にのみアクセスできるように、ユーザーの権限を管理し、依存アプリケーションの要件を満たすことで達成されます。この記事では、アクセス管理の歴史、期待される現在の機能、そして今後のトレンドについて見ていきます。
 
-Keywords: Access Control, Authorization, Governance, Risk, Authentication, Future
+キーワード: Access Control, Authorization, Governance, Risk, Authentication, Future
 
-How to Cite:
+引用の仕方:
 
 Koot A., (2020) “Introduction to Access Control”, IDPro Body of Knowledge 1(2).
 
-PUBLISHED ON 18 JUN 2020
+2020年6月18日発行
 
-PEER REVIEWED
+査読付き
 
-LICENSE CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL-NODERIVS 4.0
+ライセンス CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL-NODERIVS 4.0
 
-# Introduction to Access Control 
+# アクセスコントロールの紹介 
 
 By André Koot
 
 © 2020 IDPro, André Koot
 
-## Introduction
+## 序章
 
-Access Control, as a concept, has a long history. But in order to investigate the current challenges and solutions, let’s start by evaluating a very old, traditional model of classified government documents.
+概念としてのアクセスコントロールには長い歴史があります。しかし、現在の課題と解決策を調査するために、まず、非常に古い伝統的な政府機密文書のモデルを評価することから始めましょう。
 
-Information in documents stored in files should not typically be accessible for everyone. The information may be classified, and only people with a required clearance level should be able to access classified files. In a physical form, this control is relatively simple: a folder with highly classified information is secured with a red lint and stamped with ‘Top Secret,’ or ‘For Your Eyes Only.’ 1
+ファイルに保存されている文書の情報は、通常、誰もがアクセスできるものではありません。情報は機密情報である可能性があり、必要なクリアランスレベルを持つ人だけが機密ファイルにアクセスできるようにすべきである。物理的な形態では、この管理は比較的簡単です。高度に機密化された情報の入ったフォルダは、赤い糸くずで固定され、「トップシークレット」または「フォーユアアイズオンリー」のスタンプが押されています。1
 
-But this simple example already addresses different fundamental concepts of security.
+しかし、この単純な例では、すでにセキュリティの異なる基本的な概念を扱っています。
 
-First, there’s the information itself. The information can be classified as Top Secret, but that must be defined by someone with the correct level of authority, like the owner of the information, the document, or the folder. Then, it must be clear what the impact of the classification level is; the classification level is needed to differentiate different levels of access to and usage of the information. The owner of the folder will probably have some guidance as to what levels of classification can be applicable and what type of user can get access.
+まず、情報そのものがあります。情報をトップシークレットに分類することはできますが、それは、情報の所有者、文書、フォルダなど、適切なレベルの権限を持つ人が定義しなければなりません。そして、分類レベルがどのような影響を与えるかを明確にしなければなりません。分類レベルは、情報へのアクセスや情報の使用の異なるレベルを区別するために必要です。 
+フォルダの所有者は、どのようなレベルの分類が適用可能か、どのようなタイプのユーザーがアクセスできるかについて、おそらく何らかのガイダンスを持っているでしょう。
 
-Second, there is the clearance level of an actor, the user of the information. In this case, the secret service agent will have been identified and vetted to be trusted in such a way that access to different security levels of information is allowed.
+第二に、情報の利用者であるアクターのクリアランスレベルがある。この場合、シークレットサービスのエージェントは、異なるセキュリティレベルの情報へのアクセスが許可されるような方法で、信頼されるように識別され、審査されているでしょう。
 
-Third, the classification level and the clearance level will have to be mapped in order to assure that only the person with the correct security clearance level can access the classified information. The owner will classify a document and will accept that a specific security level can only be accessed by a pre-defined trust level of an agent.
+第三に、正しいセキュリティクリアランスレベルを持つ者だけが機密情報にアクセスできることを保証するために、分類レベルとクリアランスレベルをマッピングしなければならない。所有者は文書を分類し、特定のセキュリティレベルはエージェントの事前に定義された信頼レベルによってのみアクセスできることを受け入れることになる。
 
-And fourth: before giving the folder to the secret service agent, the person who is responsible for storing and retrieving the file in an archive (the file manager or access controller) must verify if the agent who requests the file is in fact the rightful user. The access controller will, therefore, try to identify the agent; the agent has to prove the right to access. This verification can be done by showing the secret service badge and a signed letter to prove that the agent has permission to access the folder. The file manager will, of course, also have to validate that the signature on the letter is correct.
+そして第四に：シークレットサービスのエージェントにフォルダを与える前に、アーカイブにファイルを保存し、取り出す責任を負う人(ファイルマネージャまたはアクセスコントローラ)は、ファイルを要求するエージェントが実際には正当なユーザーであるかどうかを確認しなければならない。したがって、アクセスコントローラは、エージェントを特定しようとします。この検証は、エージェントがそのフォルダにアクセスする権限を持っていることを証明するために、シークレットサービスのバッジと署名入りの手紙を見せることで行うことができます。ファイル管理者は、もちろん、手紙の署名が正しいことを検証しなければならない。
 
-Only after these responsibilities have been fulfilled will the folder be handed over to the secret service agent. The hand-over is then registered in a journal.
+これらの責任が果たされた後にのみ、フォルダはシークレットサービスのエージェントに引き渡されます。引き渡しは、その後、ジャーナルに登録されます。
 
-The access controller will always oversee the access, and that’s been made easy by checking the red lint that is used to close a folder. Theft of information—e.g., data leakage—is also quite physical in this example: the folder is removed. It may be found lying around, with or without the red lint.
+アクセスコントローラは常にアクセスを監視しており、フォルダを閉じるために使用される赤い糸くずをチェックすることで、これを簡単にしています。この例では、情報の盗難（データ漏洩など）もかなり物理的なもので、フォルダが削除されます。赤い糸くずの有無にかかわらず、その辺に転がっているのが見つかるかもしれません。
 
-In this scenario, Access Control is quite simple: you can literally observe access infractions. Access is granted by physically handing over the folder to a person with the corresponding clearance level, indicated by a personal badge, and may be enforced further by restricting access to a specific location.
+このシナリオでは、アクセス制御は非常にシンプルです。アクセスは、パーソナル バッジで示されたクリアランス レベルに対応する人物にフォルダを物理的に渡すことで許可され、特定の場所へのアクセスを制限することでさらに強化されます。
 
-We can see the following topics:
+以下のようなトピックを見ることができます。:
 
-1. Classification of information: this is an aspect of Risk Management
-2. Classification of users: this is an aspect of Identity Management
-3. Authorization mapping: this belongs to Authorization Management
-4. Authentication: this verification is part of both Identity Management and Access Management
-5. Access granted: this is Access Control
+1. 情報の分類：これはリスク管理の側面です。
+2. ユーザーの分類：これはアイデンティティ管理の側面である。
+3. 認可マッピング: これは認可管理に属する
+4. 認証：この検証は、アイデンティティ管理とアクセス管理の両方に含まれています。
+5. アクセスが許可されました：これはアクセス制御です。
 
-Since the advent of the computer, there has been a need to control access to systems, documents, and other protected resources. In the early era of computers, processes analogous to the old spy movie era were used to model access control mechanisms. Concepts like ‘owner of a resource’ and ‘reader of a resource’ were used. Programmers developed access control mechanisms like Discretionary Access Control (DAC) (“you may never bypass the access controller,” a feature that can still be found in the Windows NTFS file system), and Mandatory Access Control (MAC) (“you can only access the data in a specific location” such as a dedicated workstation in a specific room). 2 , 3 The fast growth of information technology resulted in a growing need to develop and improve access control. The increase in the number of users, the number of systems, the exponential growth of the information processed makes it evident that the paper world metaphor is not sustainable in the digital world.
+コンピュータの出現以来、システムや文書、その他の保護されたリソースへのアクセスを制御する必要性がありました。コンピュータの初期の時代には、アクセス制御メカニズムをモデル化するために、古いスパイ映画の時代に類似したプロセスが使用されました。リソースの所有者」や「リソースの読者」といった概念が使われていました。プログラマは、裁量アクセス制御(DAC)（「アクセスコントローラを迂回してはならない」という機能で、Windows NTFSファイルシステムに今でも見られる）や強制アクセス制御(MAC)（「特定の部屋の専用ワークステーションなど、特定の場所でしかデータにアクセスできない」）のようなアクセス制御メカニズムを開発しました。2 , 3 情報技術の急速な発展に伴い、アクセス制御の開発と改善の必要性が高まってきました。ユーザー数の増加、システム数の増加、処理される情報の指数関数的な増加は、紙の世界の比喩がデジタルの世界では持続可能ではないことを明らかにしています。
 
-It was soon realized that the concept of trust levels—e.g., managing the clearance level of an individual document reader—is hard to implement. Because so many actors are playing along and there is no longer a physical security control in place (you cannot see the red lint). Instead, there can even be multiple copies of a folder or file in multiple locations, and theft no longer means that the data is gone, but data will probably be copied without the consent of the owner. What was physically easy to implement is not easy to implement in the digital world. But the lessons learned in Identification, Authentication, Authorization, Access Control, Logging, and Auditing, have been kept.
+信頼レベルの概念（例えば、個々の文書読取者のクリアランスレベルを管理すること）は、実装が難しいことがすぐにわかりました。なぜなら、非常に多くのアクターがそれに合わせて行動しており、もはや物理的なセキュリティ管理が行われていないからです（赤い糸くずが見えない）。その代わり、フォルダやファイルの複数のコピーが複数の場所に存在することさえあり、盗難はもはやデータがなくなることを意味しませんが、データはおそらく所有者の同意なしにコピーされることになるでしょう。物理的に簡単だったことが、デジタルの世界では簡単には実現できない。しかし、「識別」「認証」「認可」「アクセス制御」「ログ」「監査」で学んだことは、そのままにしています。
 
-Access to information, data, services, and systems, as well as access to physical locations, is governed by security policies. These security policies must be formalized and need to be enforced by the owner of the resource. In doing so, the owner will try to manage the risk involved in access, such as the risk of abuse of information, data leakage, theft, fraud, and other security threats. In order to be in control, the owner needs to have the assurance of the level of security capable of being achieved by the security controls that have been put in place.
+情報、データ、サービス、システムへのアクセス、および物理的な場所へのアクセスは、セキュリティポリシーによって管理されます。これらのセキュリティポリシーは形式化されていなければならず、リソースの所有者が実施する必要があります。そうすることで、所有者は、情報の乱用、データ漏洩、盗難、詐欺、その他のセキュリティ上の脅威など、アクセスに関連するリスクを管理しようとします。管理を行うためには、所有者は、配置されたセキュリティ管理によって達成可能なセキュリティレベルの保証を持つ必要があります。
 
-Apart from the concepts of access control, ownership in itself is a complex topic. Looking at the concept of data ownership, many criteria to establish ownership can be identified. Someone can be the owner of information because:
+アクセス制御の概念とは別に、所有権はそれ自体が複雑なテーマである。データの所有権の概念を見ると、所有権を確立するための多くの基準を特定することができます。誰かが情報の所有者になることができるのは、以下の理由からです。:
 
-* They created the data.
-* They funded the data processing facility.
-* The data is about this person (e.g., a medical record of a patient)
+* データを作成してくれました。
+* 彼らはデータ処理施設に資金を提供した
+* この人に関するデータ(患者のカルテなど)
 
-There can be many more criteria to identify the owner, but this is part of Data Governance and out of scope for this article. In the case of medical files, the object, the patient, has several inherent rights to the data, making this person partly accountable for the access decision. The concept of shared responsibility for access control will be explained in a separate article about Access Governance in the IDPro BoK.
+所有者を特定するための基準は他にもたくさんあるが、これはデータガバナンスの一部であり、この記事の対象外である。医療ファイルの場合、オブジェクトである患者は、データに対するいくつかの固有の権利を持っており、この人がアクセスの決定に対して部分的に責任を負うことになります。アクセス制御の共有責任の概念については、IDPro BoKのアクセスガバナンスについての別記事で説明します。
 
-## Terminology
+## 専門用語
 
-* Identification – Uniquely establish a user of a system or application.
+* 識別 - システムまたはアプリケーションのユーザーを一意に確立します。
 
-* Authentication – The ability to prove that a user or application is trustworthy and has the authority to access a protected resource by validating credentials of an access requester (a user, a process, a system, or a thing).
+* 認証 - アクセス要求者（ユーザー、プロセス、システム、または物）の資格情報を検証することで、ユーザーやアプリケーションが信頼でき、保護されたリソースにアクセスする権限を持っていることを証明する能力。
 
-* Multi-factor Authentication (MFA) – An approach whereby a user’s identity is validated to the trust level required according to a security policy for a resource being accessed using more than one factor (something you know (e.g., password), something you have (e.g., smartphone), something you are (e.g., fingerprint).
+* 多要素認証（MFA） - 複数の要素（知っているもの（パスワードなど）、持っているもの（スマートフォンなど）、自分自身であるもの（指紋など））を使って、アクセスされるリソースに対して、セキュリティポリシーに基づいて必要な信頼レベルまでユーザーの身元を検証するアプローチ。
 
-* Authorization – Determining a user’s rights to access functionality with a computer application and the level at which that access should be granted. In most cases, an ‘authority’ defines and grants access, but in some cases, access is granted because of inherent rights (like patient access to his/her own medical data).
+* 権限 - コンピュータアプリケーションの機能にアクセスするためのユーザーの権利と、そのアクセスを許可すべきレベルを決定すること。ほとんどの場合、「権限」がアクセスを定義し、許可するが、場合によっては、固有の権利のためにアクセスが許可されることもある（患者自身の医療データへのアクセスのような）。
 
-* Accountability – The obligation of a person to accept the results of one’s actions, be they positive or negative. This person is probably also a species of an owner.
+* 説明責任 - 自分の行動の結果を肯定的にも否定的にも受け入れる義務のこと。この人も所有者の一種であろう。
 
-* Protected Resource - A system, process, service, information object, or physical location that is subject to access control as defined by the owner of the resource and by other stakeholders, such as a business process owner or risk manager.
+* 保護されたリソース - リソースの所有者およびビジネスプロセスの所有者やリスクマ ネージャーなどの利害関係者によって定義されたアクセス制御の対象となるシステム、プロセス、 サービス、情報オブジェクト、または物理的な場所。
 
-* Access Control – Controlling who can have access to data, systems, services, resources, locations. The ‘Who’ can be a user, a device or thing, a service.
+* アクセスコントロール - データ、システム、サービス、リソース、場所へのアクセスを持つことができる人を制御します。誰が」ユーザー、デバイスや物、サービスにすることができます。
 
-* Access Governance – The assurance that all access has been given based on the correct decision criteria and parameters.
+* アクセスガバナンス - すべてのアクセスが正しい決定基準とパラメータに基づいて与えられていることを保証すること。
 
-* Access Policy – Definition of the rules to allow or disallow access to secured objects.
+* アクセスポリシー - 保護されたオブジェクトへのアクセスを許可または禁止するためのルールの定義。
 
-* Access Requester – The person, process, system, or thing that seeks to access a protected resource.
+* アクセス要求者 - 保護されたリソースにアクセスしようとする人、プロセス、システム、または物。
 
-* Access Supplier – The component granting access to data, systems, services after the access policy requirements (set in the Policy Administration Point) have been met by the Access Requester.
+* アクセスサプライヤ - アクセス要求者がアクセスポリシーの要件（ポリシー管理ポイントで設定）を満たした後に、データ、システム、サービスへのアクセスを許可するコンポーネント。
 
-* Policy Engine - It is a security component that validates whether an actor is allowed to access a protected resource, following the requirements in an access policy.
+* Policy Engine - アクセス ポリシーの要件に従って、アクターが保護されたリソースへのアクセスを許可されているかどうかを検証するセキュリティ コンポーネントです。
 
-* Policy Enforcement Point (PEP) – The authority that will only let an Access Requester connect to the Access Supplier if the Policy Decision Point allows it.
+* ポリシー施行ポイント（PEP） - ポリシー決定ポイントが許可している場合にのみ、アクセス要求者にアクセス供給者への接続を許可する権限です。
 
-* Policy Decision Point (PDP) – The policy engine validating Access requests and provided attributed against the Access Policy (as defined in the Policy Administration Point).
+* ポリシー決定ポイント (PDP) - アクセス リクエストを検証するポリシー エンジンであり、アクセス ポリシーに基づいて提供されます (ポリシー管理ポイントで定義されています)。
 
-* Policy Administration Point (PAP) – The location where the different types of owners define the access policy.
+* ポリシー管理ポイント（PAP） - 異なるタイプの所有者がアクセスポリシーを定義する場所。
 
-* Policy Information Point – The authority that refers to the (external) trusted providers of attributes that will be used in the Access Decision. An example is the myacclaim.com service that administers Open Badges of certifications, such as CISSP and MSCP.
+* ポリシー情報ポイント - アクセス決定で使用される属性の（外部の）信頼できる提供者を参照する権限。例としては、CISSP や MSCP などの証明書のオープンバッジを管理する myacclaim.com サービスがある。
 
-## Acronyms
+## 略語
 
 * ABAC – Attribute-Based Access Control
 
@@ -132,161 +133,161 @@ There can be many more criteria to identify the owner, but this is part of Data 
 
 * SoD – Segregation of Duties
 
-# AAA: Authentication, Authorization, Accountability
+# AAA: 認証、認可、説明責任
 
-Just as we showed in the classified document example above, in order to get access, a validated identity is key. The ideas behind this paradigm can be summarized by the concepts of AAA.
+上の分類された文書の例で示したように、アクセスを得るためには、認証されたIDが鍵となります。このパラダイムの背後にある考え方は、AAAの概念で要約することができます。
 
-## Authentication
+## 認証
 
-Authentication is the process of proving that the user with a digital identity who is requesting access is the rightful owner of that identity. It can be as simple as using a password, or complex as providing a digital certificate. Both the Access Supplier and the Access Requester must be able to manage and consume the results of the authentication process.
+認証とは、アクセスを要求するデジタル ID を持つユーザーがその ID の正当な所有者であることを証明するプロセスである。これは、パスワードを使用するのと同じくらい簡単なものから、デジタル証明書を提供するのと同じくらい複雑なものまであります。アクセス供給者とアクセス要求者の両方が、認証プロセスの結果を管理し、利用することができなければなりません。
 
-### Challenge - Response
+### チャレンジ - レスポンス
 
-The user might provide proof of this rightful usage by providing a secret that only the access requester and the access supplier know, like a secret code or a password. The underlying mechanism is called Challenge-Response. The Access Supplier challenges the Access Requester to prove his or her identity, and the subject will have to respond in the way the Access Supplier expects. The simplest way to do challenge-response is by asking for a password or pin-code. But also the CAPTCHA feature on many websites is a form of challenge-response: prove that you are a human being. 4
+ユーザーは、秘密のコードやパスワードのように、アクセス要求者とアクセス供給者だけが知っている秘密を提供することで、この正当な利用を証明することができるかもしれません。基本的なメカニズムは、チャレンジレスポンスと呼ばれています。アクセス供給者はアクセス要求者に自分の身元を証明するようにチャレンジし、対象者はアクセス供給者が期待する方法で応答しなければなりません。チャレンジレスポンスを行う最も簡単な方法は、パスワードやピンコードを要求することです。しかし、多くのウェブサイトに搭載されているCAPTCHA機能もまた、チャレンジレスポンスの一形態である：あなたが人間であることを証明してください。4
 
-### Knowledge – Possession - Being
+### 知識-所有-存在
 
-But other than a CAPTCHA challenge, a known secret can be shared. It may not be sufficient to assure the rightful access, because by sharing a password, or by finding a password lying around (on a post-it note for instance), others may pretend to be the rightful owner. This weakness of the known-secret model means that the trust level of an access requester who uses just a password may not be sufficient for some applications.
+しかし、CAPTCHAチャレンジ以外では、既知の秘密を共有することができます。パスワードを共有したり、(例えばポストイットノートの上で)パスワードが転がっているのを見つけたりすることで、他の人が正当な所有者のふりをする可能性があるため、正当なアクセスを保証するには十分ではないかもしれません。このような既知の秘密モデルの弱点は、パスワードだけを使用するアクセス要求者の信頼レベルがアプリケーションによっては十分ではないことを意味します。
 
-After identification and even authentication, there is a degree of uncertainty in identifying the rightful owner, which should result in further evaluation of the level of access. A low level of confidence may be enough to give access to public information, but it will probably be insufficient to provide access to classified information.
+本人確認や認証の後、正当な所有者の特定にはある程度の不確実性があり、その結果、アクセスのレベルがさらに評価されるべきである。信頼度が低ければ公開情報へのアクセスには十分かもしれないが、機密情報へのアクセスにはおそらく不十分であろう。
 
-Adding more proof of identity can be done by demanding more specific and unique identifiers, proofs of identity. These more trusted authentication means cannot be easily copied, or easily shared or stolen (it is not impossible, but the cost of copying a secure physical token can be too high to make it economically unsound to forfeit). In practice, this is done by introducing additional factors, such as tokens, certificates, biometric proof. Requesting these additional proofs of identity can be requested either at the start of a session at the first authentication or during a session after a previous low-trust authentication has been found insufficient for getting access to a secured resource. In this case, the low-trust access can be enhanced by performing a ‘step-up’ authentication, requiring the additional factors: the first step during login could be using a password, and then a second higher-level step could involve use of a token or biometric proof.
+身元の証明をより多く追加するには、より具体的でユニークな識別子、すなわち身元の証明を要求することによっ て行うことができる。これらのより信頼された認証手段は、容易にコピーできない、または容易に共有または盗用できない（不可能ではないが、 安全な物理的トークンをコピーするコストが高すぎて、それを没収するのは経済的に不健全になる可能性がある）。実際には、トークン、証明書、バイオメトリクス証明などの追加要素を導入することでこれが行われる。これらの追加的な身元証明の要求は、最初の認証時にセッションの開始時に要求するか、以前の低信頼認証では安全なリソースへのアクセスが不十分であることが判明した後のセッション中に要求することができます。この場合、「ステップアップ」認証を実行することで低信頼アクセスを強化することができ、追加の要素を要求することができます。ログイン中の最初のステップではパスワードを使用することができ、その後、2 番目の高レベルのステップではトークンまたは生体認証を使用することができます。
 
-## Authorization
+## 認可
 
-Authorization, often a synonym to the phrase access control, is the next step in getting access after the phase of authentication. It is the act of granting access to a specific resource, such as a computer application or a specific function within an application.
+アクセス制御と同義語であることが多い認可は、認証の段階の後にアクセスを得るための次の段階です。これは、コンピュータアプリケーションやアプリケーション内の特定の機能など、特定のリソースへのアクセスを許可する行為です。
 
-Authorization is closely related to the concept of Authority. Someone, such as an owner, is accountable and, because of the ownership, is mandated to authorize others to access the protected resource. This accountability does not imply that the other person becomes the owner, but it does mean that several permissions, such as ‘read’ or ‘delete,’ can be executed. The owner stays accountable throughout the lifecycle of the data. Some of the tasks of the owner can be delegated to others in such a way that, for instance, a line manager may, within the boundaries set by the owner, grant read access to a resource to an employee.
+権限は、権限の概念と密接に関連している。所有者のような誰かが説明責任を持ち、所有権があるため、保護されたリソースにアクセスするために他の人に権限を与えることが義務付けられています。この説明責任は、他の人が所有者になることを意味するものではありませんが、「読み取り」や「削除」などのいくつかの権限が実行できることを意味します。所有者はデータのライフサイクルを通して説明責任を負う。所有者のタスクのいくつかは、例えばラインマネージャーが、所有者によって設定された境界内で、従業員にリソースへの読み取りアクセスを許可することができるような方法で、他の人に委任することができます。
 
-### Mainstream Access Control Methods
+### 主流のアクセス制御方法
 
-Currently, many organizations have security policies embedded in various applications, operating systems, and networking components. These controls are implemented in the form of Access Control Lists (ACLs), Roles, and DAC business rules. But these controls have to be designed and implemented in every relevant component. And these controls have to be designed in a consistent manner. If, for instance, a Segregation of Duties (SoD) restriction is defined for a specific process, every system, application, platform, app, and network component must support the SoD rule. If one of the many components is lacking the SoD control, then the organization is not in control.
+現在、多くの組織では、さまざまなアプリケーション、オペレーティング・システム、およびネットワーク・コンポーネントにセキュリティ・ポリシーが埋め込まれています。これらの制御は、アクセス制御リスト（ACL）、ロール、DACビジネスルールの形で実装されています。しかし、これらの制御は、関連するすべてのコンポーネントに設計され、実装されていなければなりません。そして、これらのコントロールは、一貫した方法で設計されなければなりません。例えば、特定のプロセスに対して職務分掌(SoD)制限が定義されている場合、すべてのシステム、アプリケーション、プラットフォーム、アプリ、およびネットワークコンポーネントはSoDルールをサポートしなければなりません。多くのコンポーネントのうちの1つがSoD統制を欠いている場合、組織は統制が取れていないことになります。
 
-This decentralized implementation of security policies makes it challenging to implement centrally managed organization-wide controls. It is likely that not all controls are similar and that the security policy and conformity must be verified for every system or platform access request.
+このようにセキュリティポリシーが分散的に実装されているため、集中管理された組織全体の統制を実装することが困難になっています。すべてのコントロールが類似しているわけではなく、システムやプラットフォームのアクセス要求ごとにセキュリティポリシーと適合性を検証しなければならない可能性があります。
 
-### Modern Access Control
+### 近代的なアクセスコントロール
 
-In modern implementations of access control, a policy engine is used to evaluate access policies centrally, and policy enforcement should encompass the ‘risk level’ evaluation. The business process owner, or data owner, tasked with managing access risk, will define the policies for which they are accountable. In some cases, there are multiple ‘business owners,’ and each is responsible for their part of the corporate security policy. This assignment of business owners can result in continuously changing access control policies.
+最近のアクセス制御の実装では、アクセスポリシーを集中的に評価するためにポリシーエンジンが使用され、ポリシーの実施は「リスクレベル」の評価を包含する必要があります。アクセスリスクの管理を担当するビジネスプロセスの所有者、またはデータ所有者は、自分たちが責任を負うポリシーを定義します。場合によっては、複数の「ビジネスオーナー」が存在し、それぞれが企業のセキュリティポリシーの一部に責任を負う。このようなビジネスオーナーの割り当てにより、アクセス制御ポリシーが継続的に変更される可能性があります。
 
-There is much development in this area, with applications no longer maintaining ACLs of users. Instead, they rely on identity management authorization systems that will, based on one or more access policies, make the decision regarding a user’s access request. Different stakeholders in a company are responsible for different policies. All applicable policies must be evaluated before access is granted. This method of fine-grained access control is a type of Mandatory Access Control.
+この分野では多くの開発が行われており、アプリケーションはもはやユーザーの ACL を維持することはできません。代わりに、1 つ以上のアクセス・ポリシーに基づいて、ユーザーのアクセス要求に関する決定を行う ID 管理認証システムに依存しています。企業内のさまざまな利害関係者は、さまざまなポリシーに責任を負っています。アクセスが許可される前に、適用されるすべてのポリシーを評価する必要があります。このようなきめ細かなアクセス制御の方法は、強制アクセス制御の一種である。
 
-## Accountability
+## 説明責任
 
-Accountability is a key responsibility in Access Governance. Making sure that every access decision is accounted for by an authorized person implies that ownership must be addressed. The owner must be informed about all activities under their control in order to be successfully accountable for the data under their stewardship.
+説明責任は、アクセスガバナンスにおける重要な責任である。すべてのアクセスの決定が権限のある人物によって説明されるようにするということは、所有者に対処しなければならないということを意味しています。所有者は、スチュワードシップの下にあるデータに対して適切な説明責任を果たすために、自分の管理下にあるすべての活動について知らされていなければなりません。
 
-Registering all activities in access control is an essential quality requirement. This record can vary in complexity from logging every authorization request (like granting or revoking authorizations or roles to and from people) to logging changes of authorizations within roles. The existence of this register is essential to be truly in control of access. The same is true for the identification and authentication process. There must be an assurance from the part of the login mechanism, the operating systems, and the IAM solutions applied to make sure that every access request is validated.
+アクセス制御におけるすべての活動を登録することは、必須の品質要件です。この記録は、すべての権限要求（人と人との間の権限や役割の付与や取り消しなど）を記録するものから、役割内の権限の変更を記録するものまで、複雑さは様々です。このレジスタの存在は、アクセスを真に制御するために不可欠です。識別と認証のプロセスについても同じことが言えます。すべてのアクセス要求が検証されていることを確認するために、ログインメカニズム、オペレーティングシステム、および適用されたIAMソリューションの一部から保証がなければなりません。
 
-## Specific Access Control Considerations
+## 特定のアクセス制御の考慮事項
 
-Access control is not only a business decision. Other considerations inform how this activity must take place, including how users will engage with the control mechanisms as well as legal implications for what is (and isn’t) required.
+アクセス制御はビジネス上の意思決定だけではありません。ユーザーがどのように制御メカニズムに関与するか、何が必要か（必要でないか）に関する法的な意味合いなど、他の考慮事項も含めて、この活動がどのように行われなければならないかを知ることができます。
 
-### The Human Factor
+### ヒューマンファクター
 
-The user who needs to cope with the security controls can themselves be a roadblock on the path toward effective’ control.’ User experience (UX) is a critical success factor in every information security project. If the security controls are too strict, users may be deterred, or they may try to circumvent the control. This avoidance on the part of the user is often seen consumer access: if a customer portal is not built with the focus on the user, then consumers tend to go elsewhere. That is a missed opportunity, resulting in low conversion rates. Consumer Identity and Access Management (CIAM) solutions are developed to prevent this behavior.
+セキュリティ管理に対処する必要があるユーザ自身が、効果的な管理への道の障害となり得る。ユーザ体験（UX）は、すべての情報セキュリティプロジェクトの重要な成功要因である。セキュリティ対策が厳しすぎると、ユーザは抑止されたり、対策を回避しようとしたりする可能性がある。 ユーザー側のこの回避は、多くの場合、消費者のアクセスを見ることができます：顧客ポータルがユーザーに焦点を当てて構築されていない場合、消費者は他の場所に行く傾向があります。これは機会を逃すことになり、結果的にコンバージョン率が低くなります。Consumer Identity and Access Management (CIAM) ソリューションは、このような行動を防ぐために開発されています。
 
-The lessons learned in CIAM are also being implemented in workforce IAM: UX starting to make an impact. For instance, if a user accesses a company intranet portal from their home location regularly in a prescribed way, like using a VPN, the access control system could validate this behavior as a factor in the authentication process. It could decide not to require the repeated use of multi-factor authentication since it is a trusted user making use of a known, trusted connection; it’s a well-known context resulting in better control of access.
+CIAMで学んだことは、ワークフォースIAM：UXが影響を与え始めているという点でも実践されています。例えば、ユーザーが自宅から定期的にVPNを利用して社内のイントラネットポータルにアクセスしている場合、アクセス制御システムはこの行動を認証プロセスの要因として検証することができる。アクセス制御システムは、既知の信頼された接続を利用している信頼されたユーザーであるため、多要素認証の繰り返し使用を必要としないことを決定することができます。
 
-### Legal Implications
+### 法的な意味合い
 
-Access Control has historically been looked at as a way to support Business Processes and is part of a larger Information Security and risk mitigation policy. The question of legal implications directly tied to Access Control practices varies from business to business, from sector to sector, and from jurisdiction to jurisdiction. There is no unambiguous answer as to the direct legal requirement for most Access Control practices as these policies are often woven into a larger program that is driven in part by any number of laws, regulations, or standards. Part of the role of an Access Control program or system is to ensure that it is flexible enough to support the larger risk management programs of the business or organization. In this way, questions about legal requirements and compliance implications can be addressed organically, allowing the organization the confidence it needs to operate and move forward.
+アクセス制御は、歴史的には、ビジネスプロセスをサポートする方法として見られており、より大きな情報セキュリ ティとリスク軽減の方針の一部となっている。アクセス・コントロールの実践に直接関連する法的な意味合いの問題は、ビジネスごと、セクターごと、法域ごとに異なる。これらのポリシーは、多くの法律、規制、または基準によって部分的に推進される大規模なプログラムの中に織り込まれていることが多いため、ほとんどのアクセ ス・コントロールの実施に直接的な法的要件については、明確な答えはありません。アクセス管理プログラムやシステムの役割の一部は、ビジネスや組織のより大きなリスク管理プログラムをサポートするのに十分な柔軟性を確保することです。このようにして、法的要件やコンプライアンスの意味合いに関する疑問に有機的に対処することで、組織が運営し、前進するために必要な自信を持つことができるようになります。
 
-In separate articles in the IDPro BoK, different aspects of laws and regulations will be illustrated in more detail.
+IDPro BoKの別記事では、法令の異なる側面を詳しく解説しています。
 
-# Current state of Access Control
+# アクセスコントロールの現状
 
-## Mainstream Access Control Mechanisms
+## 主流のアクセス制御機構
 
-Several mechanisms support the implementation of access control. This section covers the more common ones: Access Control Lists (ACLs), Role-based Access Controls (RBACs), and Attribute-based Controls (ABACs).
+いくつかのメカニズムがアクセス制御の実装をサポートしています。このセクションでは、より一般的なものについて説明します。アクセス制御リスト(ACL)、役割ベースのアクセス制御(RBAC)、属性ベースの制御(ABAC)です。
 
-### Access Control Lists - ACL
+### アクセス制御リスト - ACL
 
-Access control to a protected resource is based on the classification level of the resource. Every resource will be classified by the owner (or a delegated person) in order to define the security level of the resource. Based on the security level, security controls must be put in place to ensure the correct level of access. The access available, i.e., the permissions that can be granted, are also known as entitlements (fine-grained permissions to access resources). One of the earliest and best-known implementations of entitlements is by using Access Control Lists (ACL’s). In an ACL, the owner of the file defines what users can have what type of access: read, write, update, delete, whatever the owner accepts as usage. This concept is easy to understand and easy to manage for individual objects. And if the number of objects is limited, controlling access via ACL’s can be enough. But when the number of users and the number of objects grows, ACL’s can be a restricting factor.
+保護されたリソースへのアクセス制御は、リソースの分類レベルに基づいて行われる。すべてのリソースは、リソースのセキュリティレベルを定義するために、所有者（または委任された人）によって分類されます。セキュリティレベルに基づいて、適切なレベルのアクセスを確保するために、セキュリティ制御を実施しなければならない。利用可能なアクセス、すなわち付与可能なパーミッションは、エンタイトルメント（リソースにアクセスするための細かいパーミッション）としても知られています。エンタイトルメントの最も初期の、そして最もよく知られた実装の1つは、アクセス制御リスト(ACL)を使用することです。ACLでは、ファイルの所有者は、どのユーザーがどのようなタイプのアクセスができるかを定義します。この概念は理解しやすく、個々のオブジェクトの管理も簡単です。また、オブジェクトの数が限られている場合は、ACLでアクセスを制御すれば十分です。しかし、ユーザの数やオブジェクトの数が増えてくると、ACL'sが制限要因になることがあります。
 
-Every owner of a file will need to define the ACL for the object. This distributed method of control implies that central control of access is non-existent. But, from an auditing perspective: it’s relatively simple to find out who has access to a protected resource since that is registered in the ACL of the resource.
+ファイルの各所有者は、オブジェクトの ACL を定義する必要があります。この分散型の制御方法は、アクセスの中央制御が存在しないことを意味します。しかし、監査の観点からは、保護されたリソースへのアクセス権がリソースの ACL に登録されているので、誰がアクセス権を持っているのかを見つけるのは比較的簡単です。
 
-The concept of ACLs will be explained in a future article in the BoK.
+ACLの考え方については、今後のBoKの記事で解説していきます。
 
-### Role-Based Access Control (RBAC)
+### 役割ベースのアクセス制御 (RBAC)
 
-Managing ACLs can be a tedious task. Managing access to resources on a user by user or entitlement by entitlement basis faces issues as populations grow. At some point, the issue of scale meant that a new access management approach was needed. Role-based Access Control (RBAC) is an approach of granting access to resources on a group level instead of on an individual level. In order to realize this, an intermediate component needs to be in place after that of the Access Controller. A Role Manager or a Role Owner has to be able to map the role of a user to an entitlement to a secured resource. This mapping looks easy enough, but in practice, this means that this person needs to work with different other responsible persons in an organization to make sure that the authorizations are not conflicting with the business processes and organizational structures of the organization. In the Access Governance article, this concept and the complexity connected with the governance model is further explained.
+ACL を管理するのは面倒な作業です。ユーザーごと、またはエンタイトルメントごとにリソースへのアクセスを管理することは、人口が増えるにつれて問題に直面します。ある時点で、規模の問題から新しいアクセス管理アプローチが必要になりました。RBAC（Role-based Access Control）は、リソースへのアクセスを個人レベルではなくグループレベルで付与するアプローチです。これを実現するためには、アクセスコントローラの後に中間コンポーネントを設置する必要があります。ロールマネージャまたはロールオーナーは、ユーザーのロールを保護されたリソースへの権限にマッピングすることができなければなりません。このマッピングは簡単そうに見えますが、実際には、権限が組織のビジネスプロセスや組織構造と矛盾していないことを確認するために、この人が組織内の他の責任者と協力しなければならないことを意味します。アクセスガバナンスの記事では、この概念とガバナンスモデルに関連する複雑さについてさらに説明しています。
 
-In the example of an internal company website, every company employee is made a member of a group called ‘Company Employees.’ The resource—in this case, the main page of the internal website—is secured in such a manner that access is granted only if a user is a member of this group. Another example is the line manager who can make a new employee member of the role Account Manager and behold, the access permissions connected to the role Account manager, are available to the new employee. This non-individual oriented way of granting access makes managing access a lot easier.
+社内Webサイトの例では、社員は全員「社員」というグループのメンバーになっています。リソースは、この場合、内部Webサイトのメインページは、このような方法で、ユーザーがこのグループのメンバーである場合にのみアクセスが許可されるように保護されています。もう一つの例は、ライン・マネージャーが新入社員をアカウント・マネージャーの役割のメンバーにすることができ、見よ、アカウント・マネージャーの役割に接続されたアクセス権限が新入社員にも利用できるようになります。アクセスを許可するこの非個人指向の方法は、アクセスを管理することをはるかに簡単にします。
 
-A system owner can also create ‘roles’ within an information system to prevent the need for managing individual entitlements. The system owner of a Customer Relationship Management (CRM) system can define a role for ‘Customer manager’ and group system authorizations (such as reading a customer record from a database or filling in a form) to that role.
+システム所有者は、個々の権限を管理する必要性を防ぐために、情報システム内に「ロール」を作成することもできます。顧客関係管理（CRM）システムのシステム所有者は、「顧客管理者」のロールを定義し、そのロールにシステム権限（データベースからの顧客レコードの読み取りやフォームへの入力など）をグループ化することができます。
 
-In RBAC, we can identify a multilevel role model. On the one hand, we can identify the grouping of identities organizationally or hierarchically, defining organizational or business roles. On the other hand, there is a grouping of authorizations or permissions on an application function or platform level called system or application roles. Connecting organizational roles to application roles creates a very efficient way of granting and revoking authorizations. But it is also very easy to complicate authorization management by nesting groups: for instance, employees working on the service desk can be made members of the group’ ServiceDesk.’ This group then could be made a member of the group Windows Administrators. By doing this, it will soon become hard to find out who has the authorizations of a Windows administrator. That would be not just the group of people who are members of the Windows Administrator role but also employees who are members of the role of ServiceDesk employee. This nesting can frustrate the insight by no small means; many IAM projects fail by the lack of un-nesting possibilities. Nesting also limits the auditability of RBAC environments; groups have to be un-nested in order to evaluate authorizations and potential conflicting authorizations.
+RBACでは、我々はマルチレベルのロールモデルを識別することができます。一方では、組織的または階層的にアイデンティティのグループ化を識別し、組織的または業務的な役割を定義することができる。一方で、システムまたはアプリケーションの役割と呼ばれるアプリケーション機能またはプラットフォームレベルでの権限または許可のグループ化がある。組織的な役割とアプリケーションの役割を結びつけることで、非常に効率的に権限を付与したり、取り消したりすることができます。しかし、グループを入れ子にすることで権限管理を複雑にすることも容易です。例えば、サービスデスクで働く従業員を「ServiceDesk」グループのメンバーにすることができます。例えば、サービスデスクで働く従業員を「ServiceDesk」グループのメンバーにし、このグループを「Windows Administrators」グループのメンバーにすることができます。このようにすることで、誰がWindows管理者の権限を持っているのかを見つけることがすぐに難しくなります。これは、Windows管理者の役割のメンバーだけでなく、ServiceDeskの従業員の役割のメンバーである従業員のグループも含まれることになります。多くのIAMプロジェクトは、ネスティングの可能性がないために失敗しています。ネスティングはまた、RBAC環境の監査可能性を制限します。グループは、権限と競合する可能性のある権限を評価するために、ネスティングを解除しなければなりません。
 
-Implementations, pros, and cons will be explained later in a future article about RBAC in the BoK.
+実装、長所、短所については、後ほどBoKのRBACについての記事で説明します。
 
-### Attribute-Based Access Control (ABAC)
+### 属性ベースアクセス制御 (ABAC)
 
-Attribute-based Access Controls (ABAC) builds on the RBAC model by introducing additional controls based on business logic. A major failing of the RBAC model is its static nature. Once an entitlement has been granted, it generally is always available to an end-user, until it is manually revoked. This longevity means that users wind up carrying access with them from Role to Role if proper cleanup actions are not taken. To address this, ABAC expands on the model, taking into consideration different characteristics of users and users’ attributes at the moment of determining if access should be granted. As a result, an access management system can make a decision based on the entitlements of a given user, as well as the time of day, the location of the user (e.g., on network or remote, geolocation based on IP address) the type of device (e.g., personal, organization owned, desktop or table), and other worker metadata. ABAC can be used both in real-time to control access at the time of the transaction, or passively controlling the assigned roles and entitlements based on user metadata. Both approaches require strong input and support from resource owners, Role managers, and people or organization managers to understand the needs of the user as well as additional support from analysts to help define the business logic.
+属性ベースのアクセス制御（ABAC）は、ビジネスロジックに基づく追加の制御を導入することで、RBACモデルをベースに構築されています。RBACモデルの主な欠点は、その静的な性質です。一度エンタイトルメントが付与されると、それは一般的に、手動で取り消されるまで、常にエンドユーザーが利用可能な状態になります。この長期性は、適切なクリーンアップアクションが取られていない場合、ユーザがRoleからRoleへとアクセスを持ち歩くことになることを意味します。これに対処するために、ABACはこのモデルを拡張し、アクセスを許可すべきかどうかを判断する時点で、ユーザーのさまざまな特性とユーザーの属性を考慮に入れています。その結果、アクセス管理システムは、与えられたユーザーの権限、時間帯、ユーザーの場所（ネットワーク上またはリモート、IPアドレスに基づくジオロケーションなど）、デバイスの種類（個人所有、組織所有、デスクトップまたはテーブルなど）、およびその他のワーカーのメタデータに基づいて決定を下すことができます。ABACは、トランザクション時のアクセスをリアルタイムで制御する場合と、ユーザーのメタデータに基づいて割り当てられた役割と権限を受動的に制御する場合の両方で使用することができます。どちらのアプローチも、ユーザーのニーズを理解するためには、リソース所有者、役割マネージャ、人や組織のマネージャからの強力な入力とサポートが必要であり、ビジネスロジックの定義を支援するアナリストからの追加サポートも必要です。
 
-For example: The Customer Relations Management process owner could define that everyone with the attribute ‘Business Role = Account manager’ can access the resource only if attribute ‘Allowed Time = defined office hours’. Multiple variations of this dynamic access control philosophy will be described later in a future IDPro BoK article.
+例えば、以下のようになります。顧客関係管理プロセスの所有者は、属性'Business Role = Account manager'を持つすべての人が、属性'Allowed Time = defined office hours'の場合にのみリソースにアクセスできるように定義することができます。この動的アクセス制御哲学の複数のバリエーションについては、将来のIDPro BoKの記事で後述します。
 
-# The Future Direction of Access Control
+# アクセス制御の今後の方向性
 
-Access Control by means of ACLs and RBACs is relatively static; the combination between a user and his or her authorizations are set and do not vary easily, and other authorizations require changes. But people move between jobs, change devices, change location, or get new tasks in a new context. Also, the risk level assigned to a protected resource can change because of a change in context or a change in applicable laws and regulations. Relevant changes may include:
+ACLやRBACによるアクセス制御は比較的静的なもので、ユーザーとその権限の組み合わせは設定されており、簡単には変化しませんし、他の権限は変更が必要です。しかし、人々は仕事の間で移動したり、デバイスを変更したり、場所を変えたり、新しいコンテキストで新しいタスクを取得したりします。また、文脈の変化や適用される法律や規制の変更により、保護されているリソースに割り当てられているリスクレベルが変わることもあります。関連する変更には、以下のようなものがあります。:
 
-* Extended organizations, internationalization, collaboration and federation, flexible workforce, meaning that in daily operations, people outside the scope of the traditional HR-operations may need to get access.
+* 拡張された組織、国際化、コラボレーション、フェデレーション、柔軟性のある労働力、つまり日常業務では、従来の人事業務の範囲外の人々がアクセスを得る必要があるかもしれないことを意味します。
 
-* Moving data processing to the cloud - leading to the development of new protocols, such as SCIM (System for Cross-domain Identity Management (the first time the acronym was used, it called Simple Cloud Identity Management, I suppose this was deemed too simple or restricting ). 5
+* データ処理をクラウドに移行 - SCIM（System for Cross-domain Identity Management（頭字語が最初に使用されたときは、Simple Cloud Identity Managementと呼ばれていましたが、これはあまりにも単純すぎるか、制限があると判断されたのでしょう）などの新しいプロトコルの開発につながった。5
 
-* New privacy regulations, such as the GDPR. 6
+* GDPRなど新たなプライバシー規制。6
 
-* The usage of mobile apps, using modern protocols like OpenID Connect requires a flexible access control topology.
+* OpenID Connectのような最新のプロトコルを使用してモバイルアプリを使用するには、柔軟なアクセス制御トポロジーが必要です。
 
-* Enforcing end-user consent and control - developments like User-Managed Access (UMA). 7
+* エンドユーザーの同意と制御の強化 - ユーザー管理型アクセス（UMA）のような開発。7
 
-* move to API-based access to micro-services - leading to new access management architectures based on protocols like OAuth2
+* マイクロサービスへの API ベースのアクセスへの移行 - OAuth2 のようなプロトコルに基づく新しいアクセス管理アーキテクチャにつながる
 
-These restrictions and changes show that a more dynamic method for managing access is needed. The future direction of Access Control takes this into account, and various developments can be identified.
+これらの制限や変化は、よりダイナミックなアクセス管理の方法が必要であることを示しています。アクセス制御の今後の方向性は、この点を考慮した上で、様々な展開が考えられます。
 
-## Dynamic Authentication
+## 動的認証
 
-Access control is not a static event. When a user starts a session accessing services requiring a low-risk level, then identification with a username and password combination may be sufficient. When later on in the session, another trust level is required. For instance, when performing a transaction, additional identification, like a token, might be needed.
+アクセス制御は静的なイベントではありません。ユーザーが低リスクレベルを必要とするサービスにアクセスするセッションを開始した場合、ユーザー名とパスワードの組み合わせによる識別で十分な場合があります。セッションの後半になると、別の信頼レベルが必要になります。例えば、トランザクションを実行する際には、トークンのような追加の識別が必要になるかもしれません。
 
-In order to adapt to these session dynamics, authentication in itself should also be a continuous process through, for example, the new concept of behavioral biometrics. Examples of changing needs for trust in the identity:
+これらのセッション・ダイナミクスに適応するためには、認証自体もまた、例えば行動バイオメトリクスの新しい概念を 通じて、継続的なプロセスでなければならない。ID に対する信頼に対するニーズの変化の例 :
 
-User switches context (such as location). This switch could effectively place the user in another trust zone, and the session should be re-evaluated
+* ユーザーがコンテキスト(場所など)を切り替える。この切り替えにより、ユーザーは事実上別の信頼ゾーンに置かれる可能性があり、セッションは再評価されるべきです。
 
-A user opens an email attachment, which by itself requires a higher trust level. This action should enforce additional authentication, such as Multi-Factor Authentication.
+* ユーザーが電子メールの添付ファイルを開くと、それ自体がより高い信頼レベルを必要とします。このアクションは、多要素認証などの追加認証を強制する必要があります。
 
-Adaptive authentication is a secure, dynamic, and ﬂexible form of authentication. It enables validating multiple factors to determine the authenticity of a login attempt before granting access to a resource. The factors that are used for user validation can depend on the risk associated with granting a particular user access and may involve adjusting the authentication strength based on the actual context.
+アダプティブ認証は、安全で動的かつ柔軟性のある認証形態です。これにより、リソースへのアクセスを許可する前に、ログイン試行の真正性を判断するために複数の要素を検証することができます。ユーザー検証に使用される要素は、特定のユーザーへのアクセス許可に関連するリスクに依存し、実際の状況に基づいて認証強度を調整する必要があります。
 
-### Policy-Based Access Control (PBAC)
+### ポリシーベースアクセス制御(PBAC)
 
-A dynamic, ﬂexible method is required for access control to become effective and efficient in extended organizations in collaboration environments with a flexible workforce. Policy-based Access Control (PBAC) is the paradigm to provide this flexibility. PBAC, also known as Claims-based Access Control or Content-based Access Control, takes some of the business logic introduced in the ABAC model and enhances it by layering additional context evaluation and dynamic step-up capabilities
+柔軟性のある従業員を擁するコラボレーション環境の拡大した組織において、効果的かつ効率的なアクセス制御を実現するためには、動的で柔軟性のある手法が必要となります。ポリシーベースのアクセス制御（PBAC）は、この柔軟性を提供するためのパラダイムです。クレームベースのアクセス制御やコンテンツベースのアクセス制御としても知られるPBACは、ABACモデルで導入されたビジネスロジックの一部を利用し、コンテキスト評価とダイナミックなステップアップ機能を追加して強化しています。
 
-The context of an access requester can change dynamically. The dynamic nature of policy management and enforcement could require step-up authentication within a session to cater for the higher trust level needed if the defined risk controls require it. A policy engine will be responsible for checking if the user attributes and context information at the time that access is requested, comply with the access policies defined by the owners of the security policies. Context information might include time of day, geographical location, or device type. The scalability of access is also enabled by making it possible to collect attributes from different trusted and pre-defined attribute providers. As an example: this person can access the Risk Management reports, but only if this person has the CRISC certificate. ISACA provides this certificate, so a lookup in the ISACA registry could answer the question regarding the CRISC certification (the mapping of the Access Requester to the ISACA member is out of scope for this discussion). 8
+アクセス要求者のコンテキストは動的に変化する可能性があります。ポリシー管理と実施の動的な性質により、定義されたリスク管理が必要な場合には、より高い信頼レベルに対応するために、セッション内でのステップアップ認証が必要になる可能性があります。ポリシーエンジンは、アクセスが要求された時点でのユーザ属性とコンテキスト情報が、セキュリティポリシーの所有者によって定義されたアクセスポリシーに準拠しているかどうかをチェックする責任があります。コンテキスト情報には、時間帯、地理的な場所、デバイスの種類などが含まれます。また、異なる信頼された、事前に定義された属性提供者から属性を収集できるようにすることで、アクセスのスケーラビリティが可能になります。例として、この人はリスク管理レポートにアクセスできますが、この人がCRISC証明書を持っている場合に限ります。ISACAはこの証明書を提供しているので、ISACAレジストリを検索すれば、CRISC証明書に関する質問に答えることができます（アクセス要求者とISACAメンバーのマッピングはこの議論の範囲外です）。8
 
-The central component in this architecture is Policy Decision Point, which evaluates access policies and returns a response to the access request. The Policy Enforcement Point then enforces the response either by code embedded in the application or, increasingly, via an API gateway. The Policy Enforcement Engine is a discretionary component in the access request ﬂow.
+このアーキテクチャの中心的なコンポーネントは、ポリシー決定ポイントで、アクセスポリシーを評価し、アクセス要求に対する応答を返します。Policy Enforcement Pointは、アプリケーションに組み込まれたコードによって、またはAPIゲートウェイを介して、応答を強制します。Policy Enforcement Engine は、アクセス要求フローの中の任意のコンポーネントです。
 
-As a further natural development, AIAC and ReBAC have to be mentioned.
+さらなる自然な展開として、AIACとReBACを挙げなければならない。
 
-## Relation-Based Access Control (ReBAC)
+## 関係ベースのアクセス制御(ReBAC)
 
-A new concept in Access Control is ReBAC, Relation Based Access Control. ReBAC addresses the possibility of making access control decisions using the relationship between the access requester and the other identities who can potentially be affected by the access control decision. These access decisions can be deduced from (amongst other services) social media network relationships of the access requester. An attribute such as ‘reputation’ can be evaluated and considered. ReBAC relies on the availability of large, distinct data sets (incorporating data from HR/Sourcing & Access/entitlement/behavior) and on AI to conduct the evaluations and recommendations for access decisions.
+アクセス制御の新しい概念として、ReBAC（Relation Based Access Control）があります。ReBACは、アクセス要求者と、アクセス制御の決定によって影響を受ける可能性のある他のアイデンティティとの関係性を利用してアクセス制御の決定を行う可能性に対応しています。これらのアクセス決定は、（他のサービスの中でも）アクセス要求者のソーシャルメディアネットワークの関係から推論することができる。評判」のような属性が評価され、考慮され得る。ReBACは、アクセス決定のための評価と勧告を行うために、大規模で明確なデータセット（HR/ソーシング＆アクセス/エンタメ/行動からのデータを組み込んだもの）とAIの利用可能性に依存しています。
 
-The direction for ReBAC is not yet entirely clear, and the development is not mature enough for mainstream implementation. We foresee the potential for implementation as part of predictive role mining technologies for dynamic ABAC implementations. 9
+ReBACの方向性はまだ完全には明確ではなく、主流の実装には十分に成熟していない。我々は、動的なABAC実装のための予測ロールマイニング技術の一部としての実装の可能性を予見している。9
 
-## Artificial Intelligence Supported Access Control (AIAC)
+## 人工知能がサポートするアクセス制御 (AIAC)
 
-We can expect much more in this area when we add the concept of Artificial Intelligence (AI). With a robust environment that classifies sensitive resources, it’s now possible to take a sophisticated risk management approach to dynamic access control whereby the identity manager solution will alert on access requests that exceed normal risk levels. AI will also monitor access control requests alerting on out-of-normal activity. As such, it can be an addition to current RBAC and ABAC implementations. This concept is not yet mainstream, and we can hardly predict the direction, but AI and machine learning may add some value.
+この分野では、人工知能（AI）の概念が加わることで、より多くのことが期待できます。機密性の高いリソースを分類する堅牢な環境があれば、ダイナミック・アクセス・コントロールに高度なリスク管理アプローチを取ることが可能になり、ID マネージャ・ソリューションが通常のリスク・レベルを超えるアクセス要求を警告します。また、AI はアクセス制御要求を監視して、通常の活動から外れた活動を警告する。そのため、現在の RBAC および ABAC 実装に追加することができる。このコンセプトはまだ主流ではなく、方向性はほとんど予測できませんが、AIと機械学習が何らかの価値を付加する可能性があります。
 
-## User Control and Consent
+## ユーザーコントロールと同意
 
-Privacy laws and regulations create a new awareness of access to Personally Identifiable Information. These laws and regulations have driven the concept of data ownership and consent by customers, employees, or patients. Data owners expect to be in control of their personal information, and in many cases, laws and regulations are mandating this. Several technological platforms have begun to spring up to fill this data ownership gap. Solutions like User-Managed Access, by Kantara Initiative, have made their way in the new access paradigms. Facilitated by the further development of protocols like OAuth, implementation of the concepts is made easier. 10
+プライバシーに関する法律や規制は、個人情報へのアクセスに対する新たな意識を生み出しています。これらの法律と規制は、顧客、従業員、または患者によるデータの所有権と同意の概念を推進しています。データ所有者は個人情報の管理を期待しており、多くの場合、法律や規制がこれを義務付けています。このデータ所有権のギャップを埋めるために、いくつかの技術的なプラットフォームが登場し始めています。カンタラ・イニシアティブの「ユーザー・マネージド・アクセス」のようなソリューションが、新しいアクセス・パラダイムに対応しています。OAuthのようなプロトコルがさらに発展しているため、この概念の実装が容易になっています。10
 
-# Conclusion
+# 結論
 
-Mainstream Access Control mechanisms like RBAC and ACL’s have a long tail and will continue to have valid use cases in many organizations. However, as companies, governments, and organizations begin to require communications and collaborations outside of their traditional four walls, other ways of controlling access are required.
+RBAC や ACL のような主流のアクセス制御メカニズムには長い歴史があり、今後も多くの組織で有効なユースケースがあります。しかし、企業、政府機関、組織が従来の4つの壁の外でのコミュニケーションやコラボレーションを必要とするようになると、他の方法でアクセスを制御することが必要になってきます。
 
-Mainstream Access Control methods are not able to deliver the growing need for ﬂexible access control in a changing world. Modern Access Governance requires modern access control methods. There is a clear need for Dynamic Access Control. Interestingly, the tools are becoming available, and implementation need not interfere with the current best practices, Adaptive Authentication, and PBAC can be added to an existing identity and access architecture. It takes some planning, based on a roadmap. And of course, it requires implementing elements of Access Governance (as explained in a separate article in the IDPro BoK).
+主流のアクセスコントロール手法では、変化する世界で高まる柔軟性のあるアクセスコントロールのニーズに対応できません。近代的なアクセスガバナンスには、近代的なアクセスコントロール手法が必要です。ダイナミックアクセスコントロールの必要性は明らかです。興味深いことに、ツールが利用可能になりつつあり、実装は現在のベストプラクティスに干渉する必要がなく、適応認証、PBACは既存のアイデンティティとアクセスアーキテクチャに追加することができます。そのためには、ロードマップに基づいた計画が必要です。そしてもちろん、アクセスガバナンスの要素を実装する必要があります（IDPro BoKの別の記事で説明しています）。
 
-## Author Bio
+## 著者情報
 
-André Koot is IAM and Security Consultant at Nixu Benelux and is the IAM Internal Practice Lead within Nixu. His IAM experience comes from a financial accounting and auditing background. This background of anti-fraud detection and prevention business processes led to research in the area of authorization principles.
+André Koot（アンドレ・クート）は、Nixu BeneluxのIAMおよびセキュリティコンサルタントであり、NixuのIAM内部プラクティスリーダーです。彼のIAMの経験は、財務会計と監査のバックグラウンドに由来しています。このような不正検知防止ビジネスプロセスの背景から、認証原則の分野での研究を行っています。
 
 1. Wikipedia contributors, "Classified information," Wikipedia, The Free Encyclopedia, https://en.wikipedia.org/w/index.php?title=Classified_information&oldid=958717370 (accessed June 8, 2020). ↩
 2. Davis, Shannon, “A Look at Discretionary Access Control,” blog, TED Systems, 27 February 2019, https://www.tedsystems.com/look-at-discretionary-access-control/. ↩

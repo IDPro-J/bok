@@ -31,14 +31,14 @@
 * Impact of GDPR on Identity and Access Management – Andrew Hindle – 2020-03-31
 
 ### IAM Architecture and Solutions
-* Introduction to IAM Architecture – Andrew Cameron and Graham Williamson – 2020-06-18
+* [Introduction to IAM Architecture – Andrew Cameron and Graham Williamson – 2020-06-18](./Introduction_to_IAM_Architecture_2020-06-18_ja.md)
 * [Designing MFA for Humans – Nishant Kaushik – 2020-10-31](./Designing_MFA_for_Humans.md)
 
 ### Access Control
 * [Introduction to Access Control – André Koot – 2020-06-18](./Introduction_to_Access_Control.md)
 
 ### Digital Identity
-* Identifiers and Usernames – Ian Glazer – 2020-03-31
+* [Identifiers and Usernames – Ian Glazer – 2020-03-31](./Identifiers_and_Usernames_–_Ian_Glazer_–_2020-03-31_ja.md)
 * A Peek into the Future of Decentralized Identity – Leo Sorokin – 2020-10-31
 
 ### Non-Human Entities

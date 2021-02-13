@@ -42,7 +42,7 @@
 * A Peek into the Future of Decentralized Identity – Leo Sorokin – 2020-10-31
 
 ### Non-Human Entities
-* Non-Human Account Management – Graham Williamson and André Koot – 2020-10-31
+* [Non-Human Account Management – Graham Williamson and André Koot – 2020-10-31](./non-human-account-management.md)
 
 ### Project Management
 * Introduction to Project Management for IAM Projects – Graham Williamson and Corey Scholefield – 2020-03-31

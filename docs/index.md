@@ -45,7 +45,7 @@
 * [Non-Human Account Management – Graham Williamson and André Koot – 2020-10-31](./non-human-account-management.md)
 
 ### Project Management
-* Introduction to Project Management for IAM Projects – Graham Williamson and Corey Scholefield – 2020-03-31
+* [Introduction to Project Management for IAM Projects – Graham Williamson and Corey Scholefield – 2020-03-31](./Introduction_to_Project_Management_for_IAM_Projects.md)
 
 ### IAM Knowledge Sharing
 * Independent IAM Organizations – Mark Drummond – 2020-03-31

@@ -1,14 +1,14 @@
-要約
+### 概要
 
  
 
-あなたは誰で、何をすることを許されていますか?デジタルシステムでは、これらの問題は「アイデンティティとアクセス管理 (IAM)」の領域である。アクセス管理システムは、誰が誰であるかを決定し、誰が何にアクセスすべきかについての決定を評価し、強制するためのメカニズムを提供します。導入のパート2では、アクセス管理の全体像を歴史的観点から検討します。私たちがアクセス管理で何をしているのか、そしてなぜ私たちの貢献が重要なのかについて、ちょっとしたアドバイス、多くのコンテキスト、そして経験に基づく概要を期待することができます。
+あなたが誰で、何をすることを許されているか。情報システムでは、この問題は「アイデンティティとアクセス管理 (IAM)」の領域となる。アクセス管理システムは、その人が誰であるかを特定し、何にアクセスすべきかを判断し、実行するための仕組みを提供する。導入部パート2では、アクセス管理とは何なのかを歴史的観点から探ってみる。私たちがアクセス管理を使用して何をしているのか、そしてなぜ私たちの存在が重要なのかについて、ちょっとしたアドバイス、多くのコンテキスト、そして経験から得られた全体感を知ることが期待できると思われる。
 
  
 
-キーワード:アクセス管理、SSO、LDAP、フェデレーション、WAM、MFA
+**キーワード:**アクセス管理、SSO、LDAP、フェデレーション、WAM、MFA
 
-引用方法:
+**引用方法:**
 
 Dingle P., (2020) 「IDの概要-第2回:アクセス管理」、 IDPro Body of Knowledge 1 (2) 。
 
@@ -16,13 +16,13 @@ Dingle P., (2020) 「IDの概要-第2回:アクセス管理」、 IDPro Body of 
 
 2020年6月18日
 
-ピアの確認
+査読済み
 
 ライセンス
 
-クリエイティブ・コモンズ表示-非営利-非派生4.0
+[CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL-NODERIVS 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0)
 
-IDの概要-第2回:アクセス管理
+#### IDの概要-第2回:アクセス管理
 
 Pamela Dingle著
 
@@ -30,21 +30,21 @@ Pamela Dingle著
 
  
 
-用語
+### 用語
 
-セレモニー-ユーザがよく監視された場所であまりナビゲートできない、予測可能なインタラクション
+- セレモニー －  よく使う場ではまれに発生するがユーザで予測し対応できる操作
+- 認可委任フレームワーク － 認証と認可を分離し、パスワードをローカルで保護できるようにするアクセス制御フレームワーク。1
 
-委任された承認フレームワーク-認証と承認を分離し、パスワードをローカルで保護できるようにするアクセス制御フレームワーク。1
+- 連携されたID － 複数の異なるID管理システムに保存されている個人の電子的なIDと属性をリンクする手段。 2
 
-連携アイデンティティ:複数の個別のアイデンティティ管理システムにわたって保存された、個人の電子的なアイデンティティと属性をリンクする手段です。2
+- 最小特権 － 最小特権の原則とも呼ばれる。ユーザーは、必要最低限のリソース(アプリケーション、データなど)にしかアクセス出来ないようにしなければならない。3
 
-最小特権-最小特権の原則とも呼ばれます。ユーザーなどのリソースは、その機能に必要なリソース(アプリケーション、データなど)にのみアクセスできる必要があります。3
+- トラスト連携 － 複数のエンティティ間で、IDおよびアクセス管理情報をコントールされた形で活用することを目的とする信頼フレームワーク。
 
-信頼フェデレーション-IDおよびアクセス管理情報を制御された方法で利用することを目的とした、複数のエンティティ間の信頼フレームワーク。
+- ゼロトラスト － NIST Draft Special Publication 800-207によると 「ゼロトラストは、物理またはネットワーク上の場所(例えば、ローカルエリアネットワークとインターネット)では、リソースまたはユーザーアカウントに暗黙の信頼が無いことを前提としています。」 4
 
-0 trust-NIST Draft Special Publication 800-207 「0 trustは、物理的またはネットワーク上の場所(すなわち、ローカルエリアネットワークとインターネット)のみに基づいて、資産またはユーザーアカウントに暗黙の信頼が付与されていないことを前提としています。」 4から
 
-はじめに
+### はじめに
 
 アクセス管理とはどのようなものですか。また、なぜこれほど魅力的なのでしょうか。決断が下され、門が開かれ、貴重な資源が見知らぬ人の手に渡る瞬間には、何かスリルと切迫したものがある。適切な人材を生産的にしたのか、それともリスクのあるミスをしたのか。適切なアクセス管理は、適切なIDデータに依存する;また、企業の規則を表すポリシー、現在の環境および状況要因の正確な理解、定義されたリスク許容度に従って実施できるツールも必要です。多くの準備と考慮が、毎日行われ、インフラストラクチャ、ミドルウェア、アプリケーション層であらゆる種類の粒度で動作するランタイム決定に注がれます。
 
@@ -132,40 +132,40 @@ SAMLはモバイル環境に完全に適合するものではありませんで�
 
  
 
-レイブル、マット「OAuthとは何か?」DZoneセキュリティゾーン、2018年4月28日、https://dzone.com/articles/what-the-heck-is-oauth。↩
+1. Raible, Matt, “What the Heck is OAuth?” DZone Security Zone,、2018年4月28日、https://dzone.com/articles/what-the-heck-is-oauth。↩
 
-Wikipediaコントリビュータ、「統合されたアイデンティティ」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Federated_identity&oldid=949399706 (2020年6月6日にアクセス)。↩
+2. Wikipediaコントリビュータ、「統合されたアイデンティティ」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Federated_identity&oldid=949399706 (2020年6月6日にアクセス)。↩
 
-Wikipediaコントリビュータ、「最小特権の原則」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Principle_of_least_privilege&oldid=950981064 (2020年6月6日にアクセス)。↩
+3. Wikipediaコントリビュータ、「最小特権の原則」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Principle_of_least_privilege&oldid=950981064 (2020年6月6日にアクセス)。↩
 
-Rose, Scott, and Oliver Borchert, Stu Mitchell, Sean Connelly, 「0 Trust Architecture (2番目のドラフト)、」 SP 800-207 (ドラフト)、 National Institute of Standards and Technology, 2020年二月、 https://csrc.nist.gov/publications/detail/sp/800-207/draft。↩
+4. Rose, Scott, and Oliver Borchert, Stu Mitchell, Sean Connelly, 「0 Trust Architecture (2番目のドラフト)、」 SP 800-207 (ドラフト)、 National Institute of Standards and Technology, 2020年二月、 https://csrc.nist.gov/publications/detail/sp/800-207/draft。↩
 
-Paul A.Grassi、James L.Fenton、Elaine M.Newton、Ray A.Perlner、Andrew R.Regenscheid、William E.Burr、Justin P.Richer。2017.デジタルIDのガイドライン-認証とライフサイクル管理。技術報告書。NIST特別公開800-63 B, ↩
+5. Paul A.Grassi、James L.Fenton、Elaine M.Newton、Ray A.Perlner、Andrew R.Regenscheid、William E.Burr、Justin P.Richer。2017.デジタルIDのガイドライン-認証とライフサイクル管理。技術報告書。NIST特別公開800-63 B, ↩
 
-グレアム・ウィリアムソンとコーリー・ショールフィールド。IAMプロジェクトのIAMプロジェクト管理の概要。IDPro Body of Knowledge、第1巻、第1号、2020年3月31日。https://bok.idpro.org/article/id/25/です。↩
+6. グレアム・ウィリアムソンとコーリー・ショールフィールド。IAMプロジェクトのIAMプロジェクト管理の概要。IDPro Body of Knowledge、第1巻、第1号、2020年3月31日。https://bok.idpro.org/article/id/25/です。↩
 
-Wikipediaコントリビュータ、「Lightweight Directory Access Protocol、」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Lightweight_Directory_Access_Protocol&oldid=960496535 (2020年6月6日にアクセス)。
+7. Wikipediaコントリビュータ、「Lightweight Directory Access Protocol、」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Lightweight_Directory_Access_Protocol&oldid=960496535 (2020年6月6日にアクセス)。
 
-「これまでにないディレクトリサービスの完全な歴史」ブログ、Easy Identity、2020年4月13日、https://idmdude.com/2012/04/13/the-most-complete-history-of-directory-services-you-will-ever-find/ (2020年6月12日にアクセス)。
+8. 「これまでにないディレクトリサービスの完全な歴史」ブログ、Easy Identity、2020年4月13日、https://idmdude.com/2012/04/13/the-most-complete-history-of-directory-services-you-will-ever-find/ (2020年6月12日にアクセス)。
 
-Wikipediaコントリビュータ、「Webアクセス管理」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Web_access_management&oldid=959341667 (2020年6月6日にアクセス)。
+9. Wikipediaコントリビュータ、「Webアクセス管理」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Web_access_management&oldid=959341667 (2020年6月6日にアクセス)。
 
-Wikipediaコントリビュータ、「Kerberos (プロトコル)」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Kerberos_(protocol)&oldid=960957884 (2020年6月6日にアクセス)。↩
+10. Wikipediaコントリビュータ、「Kerberos (プロトコル)」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Kerberos_(protocol)&oldid=960957884 (2020年6月6日にアクセス)。↩
 
-Wikipediaコントリビュータ、「セキュリティアサーションマークアップ言語」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Security_Assertion_Markup_Language&oldid=956779073 (2020年6月6日にアクセス)。
+11. Wikipediaコントリビュータ、「セキュリティアサーションマークアップ言語」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Security_Assertion_Markup_Language&oldid=956779073 (2020年6月6日にアクセス)。
 
-Weinert, Alex, 「Pa$$という単語は関係ありません。」 Azure Active Directory Identity Blog, Microsoft Corporation, 2019年7月9日、 https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984。
+12. Weinert, Alex, 「Pa$$という単語は関係ありません。」 Azure Active Directory Identity Blog, Microsoft Corporation, 2019年7月9日、 https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984。
 
-モリスロバートケントンプソン。「パスワードセキュリティ:ケース履歴」ACM 22.11 (1979) の通信:594-597。
+13. モリスロバートケントンプソン。「パスワードセキュリティ:ケース履歴」ACM 22.11 (1979) の通信:594-597。
 
-Feldmeier D.C., Karn P.R. (1990) UNIX Password Security -10年後。In:Brassard G. (編) Advances in Cryptology:CRYPTO’89 Proceedings。暗号1989。コンピュータサイエンスの講義ノート、 vol 435。スプリンガー、ニューヨーク、ニューヨーク
+14. Feldmeier D.C., Karn P.R. (1990) UNIX Password Security -10年後。In:Brassard G. (編) Advances in Cryptology:CRYPTO’89 Proceedings。暗号1989。コンピュータサイエンスの講義ノート、 vol 435。スプリンガー、ニューヨーク、ニューヨーク
 
-「FIDO 2:WebAuthnとCTAP」 FIDO Alliance、https://fidoalliance.org/fido2/。
+15. 「FIDO 2:WebAuthnとCTAP」 FIDO Alliance、https://fidoalliance.org/fido2/。
 
-Wikipediaコントリビュータ、「クラウドアクセスセキュリティブローカ」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Cloud_access_security_broker&oldid=949494699 (2020年6月6日にアクセス)。
+16. Wikipediaコントリビュータ、「クラウドアクセスセキュリティブローカ」 Wikipedia、The Free Encyclopedia、https://en.wikipedia.org/w/index.php?title=Cloud_access_security_broker&oldid=949494699 (2020年6月6日にアクセス)。
 
-Raam、Giridhara、「Unified Endpoint Managementの概要、理由、および方法」 Integration Zone、DZone、2019年7月8日、https://dzone.com/articles/the-what-why-and-how-of-unified-endpoint-managemen。
+17. Raam、Giridhara、「Unified Endpoint Managementの概要、理由、および方法」 Integration Zone、DZone、2019年7月8日、https://dzone.com/articles/the-what-why-and-how-of-unified-endpoint-managemen。
 
-ペッターズ、ジェフ、 「UEBAとは何ですか?『Complete Guide to User and Entity Behavior Analytics』、Inside Out Security Blog、Varonis、2020年3月29日。https://www.varonis.com/blog/user-entity-behavior-analytics-ueba/
+18. ペッターズ、ジェフ、 「UEBAとは何ですか?『Complete Guide to User and Entity Behavior Analytics』、Inside Out Security Blog、Varonis、2020年3月29日。https://www.varonis.com/blog/user-entity-behavior-analytics-ueba/
 
-Clear, James, 「アクラシア効果:私たちがやろうとしていることと、それについて何をすべきかをフォローしない理由」 Atomic Habits, https://jamesclear.com/akrasia (2020年6月6日にアクセス)からの抜粋。
+19. Clear, James, 「アクラシア効果:私たちがやろうとしていることと、それについて何をすべきかをフォローしない理由」 Atomic Habits, https://jamesclear.com/akrasia (2020年6月6日にアクセス)からの抜粋。

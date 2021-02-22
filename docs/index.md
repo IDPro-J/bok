@@ -39,7 +39,7 @@
 
 ### Digital Identity
 * [Identifiers and Usernames – Ian Glazer – 2020-03-31](./Identifiers_and_Usernames_–_Ian_Glazer_–_2020-03-31_ja.md)
-* A Peek into the Future of Decentralized Identity – Leo Sorokin – 2020-10-31
+* [A Peek into the Future of Decentralized Identity – Leo Sorokin – 2020-10-31](./A-Peek-into-the-Future-of-Decentralized-Identity.md)
 
 ### Non-Human Entities
 * [Non-Human Account Management – Graham Williamson and André Koot – 2020-10-31](./non-human-account-management.md)

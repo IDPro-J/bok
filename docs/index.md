@@ -1,5 +1,7 @@
 # IDPro Body of Knowledge 日本語化プロジェクト
 
+[IDPro](https://idpro.org/)の[Body of knowledge](https://idpro.org/body-of-knowledge/)を日本語化していきます。
+
 ## IDPro Body of Knowledge Volume 1
 
 ### Introduction

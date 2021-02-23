@@ -20,7 +20,7 @@
 * [Introduction to Privacy for Consumers – Clare Nelson – 2020 -06-18](./introduction_to_privacy_and_compliance_for_consumers.md)
 
 ### Workforce IAM
-* An Overview of the Digital Identity Lifecycle – Andrew Cameron and Olaf Grewe – 2020-10-31
+* [An Overview of the Digital Identity Lifecycle – Andrew Cameron and Olaf Grewe – 2020-10-31](./An_Overview_of_the_Digital_Identity_Lifecycle.md)
 
 ### Standards, Regulations, and Laws
 * [Review – ISO/IEC 24760-1:2019 – Corey Scholefield – 2020-03-31](./Review–ISO_IEC24760-1_2019.md)

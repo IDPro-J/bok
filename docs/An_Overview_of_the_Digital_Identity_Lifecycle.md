@@ -1,6 +1,6 @@
-## Abstract
+## 抄録
 
-A digital identity goes through several stages during its existence, from creation, through various modifications in response to different events, to inactivation or deletion. This article walks through the types of digital identities that must be managed, along with the various stages of a digital identity, describing the typical beginning-to-end lifecycle within or across multiple systems. The lifecycles outlined in this document are not meant to be comprehensive but should be applicable over most B2B, B2C, and B2E use cases.
+デジタル ID は、作成から、さまざまなイベントに対応したさまざまな変更、無効化または削除に至るまで、その存 在中にいくつかの段階を経る。この文書では、管理する必要があるデジタル ID の種類と、デジタル ID のさまざまな段階を説明し、複数のシステム内または複数のシステムにまたがる典型的な開始から終了までのライフサイクルを説明する。本書で概説されているライフサイクルは、包括的なものではないが、ほとんどの B2B、B2C、および B2E のユースケースに適用可能である。
 
 Keywords: Lifecycle, Digital Identity, User Journey
 
@@ -14,121 +14,121 @@ PEER REVIEWED
 
 LICENSE CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL-NODERIVS 4.0
 
-### An Overview of the Digital Identity Lifecycle
+### デジタル・アイデンティティ・ライフサイクルの概要
 
 By Andrew Cameron and Olaf Grewe
 
 © 2020 IDPro, Andrew Cameron, Olaf Grewe
 
-Introduction to Digital Identity
+デジタルアイデンティティ入門
 
-A digital identity, for the purpose of this document, is defined as a unique identifier together with relevant attributes required to enable a digital transaction to generate value. Depending on the complexity of the environment in which a digital identity is used, its lifecycle can be significantly more complicated than a simple create, read, update, and delete (CRUD) lifecycle. 1
+本文書の目的では、デジタル ID は、デジタル・トランザクションが価値を生成できるようにするために必要な 関連属性を持つ一意の識別子として定義される。デジタル ID が使用される環境の複雑さに応じて、そのライフサイクルは、単純な作成、読 み取り、更新、および削除（CRUD）のライフサイクルよりも大幅に複雑になる可能性がある。1
 
-Depending on the type of identity (human such as Workforce or Customer, and non-human types such as System or Device), the lifecycle phases will differ. Enterprise IAM has typically been a well-established set of processes that provide the processes and governance capabilities to ensure only the correct people (accounts) have access to only the required applications (resources). Customer IAM has an entirely different set of requirements that represent value to a business due to the nature of its defining interactions with a customer. Poor or inefficient interactions with customers can have severe negative effects on a business. For these reasons, the different identity types will require separate systems and processes supporting them:
+アイデンティティのタイプ（WorkforceやCustomerなどの人間型、SystemやDeviceなどの非人間型）によって、ライフサイクルのフェーズは異なります。エンタープライズIAMは、一般的に、正しい人（アカウント）だけが必要なアプリケーション（リソース）だけにアクセスできるようにするためのプロセスとガバナンス機能を提供する、確立された一連のプロセスとなっています。顧客IAMは、顧客との相互作用を定義する性質上、ビジネスにとっての価値を表す要件が全く異なります。顧客との相互作用が不十分であったり、非効率であったりすると、ビジネスに深刻な悪影響を及ぼす可能性があります。これらの理由から、異なるIDタイプは、それらをサポートする別個のシステムとプロセスを必要とします。
 
-| Identity Type | Description |
+| アイデンティティの種類 | 説明 |
 |----------------|---------------|
-| Workforce | A workforce identity is one created to function in an enterprise context, which may include a Business-to-Business (B2B) and/or Business-to-Employee (B2E). Examples of these identity types will be Employees, Suppliers, Contractors, or other human identities that support the corporate workforce. |
-| Customer | A customer identity type will usually function outside the enterprise context, enabling digital business between the owner of the customer identity and the enterprise. Typically, there will be multiple channels (Web, Mobile, IoT Device) of access to manage with a larger set of profile (identity attribute) data necessary to facilitate the interaction. |
-| Device or System | Device identities typically are used to provide identification and representation on a digital network. System identities are used to authenticate services (e.g., applications or server-based processes) to a network. |
+| 従業員 | 従業員 ID は、企業の文脈で機能するように作成されたものであり、企業間（B2B）および／または企業間（B2E）を含む場合がある。これらの ID タイプの例としては、従業員、サプライヤ、請負業者、または企業の労働力をサポートするその他の人間の ID が挙げられます。 |
+| 顧客 | 顧客 ID タイプは通常、企業のコンテキストの外で機能し、顧客 ID の所有者と企業との間でデジタル・ビジネスを可能にする。通常、複数のチャネル（Web、モバイル、IoT デバイス）からのアクセスがあり、相互作用を促進するために必要なプロファイル（ID 属性）データの大規模なセットで管理されます。 |
+| デバイスまたはシステム | デバイス・アイデンティティは、通常、デジタル・ネットワーク上での識別と表現を提供するために使用されます。システムアイデンティティは、ネットワークに対するサービス（アプリケーションやサーバーベースのプロセスなど）を認証するために使用されます。 |
 
-## Key Terms
+## キーワード
 
-* Digital Identity - A unique identifier that, together with relevant attributes, is required in the context of a digital transaction to generate value.
-* Journey-based Creation – The process that guides a customer through a series of interactions prior to establishing a digital identity. For example, capturing the minimum basic information needed from a customer to enable creation of an identity.
-* Attributes - Key/value pairs relevant for the digital identity (username, first name, last name, etc.).
-* Inter-organizational (Federation): An organization relies on another organization’s digital identity and lifecycle management processes.
-* Intra-organizational (Single Sign-On): A central digital identity, such as an account in a directory, is linked by downstream systems as authoritative for authentication.
+* Digital Identity - 価値を生成するためにデジタル取引の文脈で必要とされる、関連する属性とともに一意の識別子。
+* Journey-based Creation – デジタル ID を確立する前に、一連の相互作用を通じて顧客を誘導するプロセス。例えば、ID の作成を可能にするために顧客から必要な最低限の基本情報を取得すること。
+* Attributes - デジタル ID に関連するキー／値のペア（ユーザー名、姓、名など）。
+* Inter-organizational (Federation): 組織が他の組織のデジタル ID およびライフサイクル管理プロセスに依存していること。
+* Intra-organizational (Single Sign-On): ディレクトリ内のアカウントなどの中心的なデジタル ID は、認証のための権威あるものとして下流システムによってリンクされています。
 
-Identity Lifecycles
+アイデンティティのライフサイクル
 
-For any lifecycle ‘create’ phase, a digital identity is created as a unique identifier in a system of record. It can be created either as part of a business process (workforce or device identity) or transparently as part of a user journey (customer identity).
+ライフサイクルの「作成」段階では、デジタル ID は記録システム内の一意の識別子として作成される。これは、ビジネス・プロセスの一部として（ワークフォースまたはデバイス ID）、またはユーザー・ジャーニーの一部として（顧客 ID）透過的に作成することができる。
 
-Throughout its lifecycle, a digital identity enables digital transactions thru its assigned accounts and entitlements. Although a lifecycle is outlined as a continuum in this document, the reader should expect that:
+ライフサイクルを通じて、デジタル ID は、割り当てられたアカウントと権限を通じてデジタル・トランザクショ ンを可能にする。この文書では、ライフサイクルは連続体として概説されているが、読者はそれを期待すべきである。
 
-The digital identity lifecycle could be distributed across multiple technical solutions in most organizations.
+デジタル ID ライフサイクルは、ほとんどの組織で複数の技術的ソリューションに分散している可能性がある。
 
-Some steps in the lifecycle (e.g., authenticate, use) will occur more frequently than others (e.g., merge, delete).
+ライフサイクルの一部のステップ（認証、使用など）は、他のステップ（マージ、削除など）よりも頻 繁に発生する。
 
-## Workforce Identity
+## 従業員のアイデンティティ
 
-The workforce identity lifecycle is addressed through three principal business processes: Joiner, Mover, or Leaver. The Joiner processes cover all lifecycle phases that facilitate the creation of assets (identities, accounts, group memberships, etc.) to enable identification and access in an enterprise environment. The Mover process allows for changes or updates to identity status while still engaged in the enterprise environment and considers the necessary attestation processes to verify access permissions and entitlements. The Leaver process covers the series of steps that must occur when an identity is removed from access to the enterprise environment.
+労働力のアイデンティティ・ライフサイクルは、3 つの主要なビジネス・プロセスを通じて対処されます。Joiner、Mover、または Leaver である。Joiner プロセスは、企業環境で ID とアクセスを可能にするための資産（ID、アカウント、グループ・メン バーシップなど）の作成を促進するすべてのライフサイクル・フェーズをカバーしている。移動者プロセスでは、企業環境にいる間に ID ステータスの変更や更新を可能にし、アクセス許可と権限を検証するために必要な認証プロセスを考慮します。Leaver プロセスは、ID が企業環境へのアクセスから削除されたときに発生する必要がある一連の手順をカバーしている。
 
-Figure 1 depicts the workforce IAM phases in the lifecycle:
+図 1 は、ライフサイクルにおけるワークフォース IAM のフェーズを示している。
 
-![Diagram of the workforce identity lifecycle that shows the cycle of create identity, provision account, provision access, authenticate, manage access, and de-provision access. Joiner is associated with Create Identity, Leaver is associated with De-Provision Access, and Mover is associated with Manage Access.](https://bok.idpro.org/article/id/31/image1.png)
+![ID の作成、アカウントのプロビジョニング、アクセスのプロビジョニング、認証、アクセスの管理、およびアクセスのデプロビジョニングのサイクルを示すワークフォース ID ライフサイクルの図。Joiner は ID の作成、Leaver はアクセスのプロビジョニング解除、Mover はアクセスの管理に関連付けられています。](https://bok.idpro.org/article/id/31/image1.png)
 
-Figure 1 – The Workforce Identity Lifecycle
+Figure 1 – 従業員のアイデンティティのライフサイクル
 
-The following table describes the phases that support the workforce identity lifecycle:
+従業員のアイデンティティのライフサイクルをサポートするフェーズを以下の表に示します。
 
-| Lifecycle Phase | Description |
+| ライフサイクルフェーズ | 説明 |
 |---|---|
-| Create Identity | The creation of a workforce identity as part of a business process (employees, suppliers, etc.) is frequently combined with the collection of proof to establish a minimum set of attributes to be associated with the identifier. The creation of a digital identity may be automated (e.g., synchronized with an HR system event), especially when digital identities are generated at scale for various purposes, such as a merger or acquisition. Enrollment processes for workforce entities frequently involve other human entities (such as a line manager or delegated admin agent) validating the proof provided. In countries without an established national identity system (US, UK, AU, etc.), it can be required to provide multiple documents as proof (driver’s license, passport, utility bill, bank card/statement) in lieu of a national identity document. |
-| Provision Account | Create accounts in enterprise systems based on business rules and required access to resources. |
-| Provision Access | Create entitlements to access corporate resources in the required systems. Entitlements are generally represented by attribute values, group memberships, or organizational alignment. Business rules will define access to a resource based on enterprise entitlements. |
-| Authenticate | Require a user account to validate a credential before allowing access to a network or resource. |
-| Manage Access | Validate that the access that has been assigned an account and approving continued access to corporate resources. Access certification is a process that validates all current access and can be used to remove no longer needed access. The attestation process for verifying and access is a critical and often underestimated component of a mature IAM system. Digital identities are frequently subject to updates, primarily of their attributes. Less frequently, the identifier itself may change. An example is a digital identity for which the username is also used as the identifier (e.g., email address). A user may wish to change their username for various purposes, such as a name change due to a life event or a change of preferences. For an in-depth discussion, please refer to Ian Glazer’s article, “Identifiers and Usernames.” 2 Frequently update the use cases describing workflow capabilities that address approval, step-up, or notification requirements. These are important controls to address identity take-over risks. Depending on the value of the digital identity for the organization, updates to digital identities may be subject to enrolment-type proofing. |
-| Deprovision Access | Remove access to any or all corporate resources. The need to remove access could occur as a result of a Leaver process or a validation from an Access Certification. When a digital identity is not required anymore, it should be disabled in the system of record. This action implies not only deletion from a central directory but also downstream systems that maintain records associated with this digital identity as well as logging and auditing repositories. Only once the identifier used for this digital identity has been removed from all systems can a digital identity be considered genuinely deleted. A detailed discussion on the importance of account disable or removal given current best practices can be found in Andrew Hindle’s article, “Impact of GDPR on Identity and Access Management.” 3 |
+| アイデンティティの作成 | ビジネス・プロセス（従業員、サプライヤなど）の一部としての労働力アイデンティティの生成は、識別子に関連付けられる属性の最小セットを確立するための証明の収集と組み合わされることが多い。デジタル ID の作成は、特に、合併や買収などのさまざまな目的のためにデジタル ID が大規模に生成される場合には、自動化され る（例えば、人事システムのイベントと同期される）ことがある。労働力事業体の登録プロセスでは、他の人間の事業体（ライン・マネジャーや委任された管理者のエージェ ントなど）が提供された証明を検証することが頻繁に行われる。確立された国民 ID システムがない国（米国、英国、オーストラリアなど）では、国民 ID 文書の代わりに複数の文書（運転免許証、パ スポート、公共料金請求書、銀行カード／明細書）を証明として提供することが要求されることがある。 |
+| アカウントの準備 | ビジネスルールに基づいて企業システムにアカウントを作成し、必要なリソースへのアクセスを実現します。 |
+| アクセスの準備 | 必要なシステム内の企業リソースにアクセスするためのエンタイトルメントを作成します。エンタイトルメントは、一般的に属性値、グループメンバーシップ、または組織的なアラインメントによって表現されます。ビジネスルールは、エンタープライズエンタイトルメントに基づいてリソースへのアクセスを定義します。 |
+| 認証 | ネットワークまたはリソースへのアクセスを許可する前に、ユーザーアカウントにクレデンシャルの検証を要求します。 |
+| アクセス管理 | アカウントが割り当てられたアクセスを検証し、企業のリソースへの継続的なアクセスを承認する。アクセス認証は、現在のすべてのアクセスを検証するプロセスであり、不要になったアクセスを削除するために使用することができます。検証とアクセスのための認証プロセスは、成熟したIAMシステムの重要かつ過小評価されがちなコンポーネントです。デジタル識別子は、主にその属性の更新を受けることが多い。それほど頻繁ではないが、識別子自体が変更されることもある。例としては、ユーザ名が識別子（例えば電子メール・アドレス）としても使用されるデジタル ID がある。ユーザーは、ライフイベントや好みの変更による名前の変更など、さまざまな目的でユーザー名を変更したい場合がある。詳細な議論については、Ian Glazer氏の記事 "Identifiers and Usernames "を参照してください。2 承認、ステップアップ、または通知の要件に対応するワークフロー機能を記述したユースケースを頻繁に更新する。これらは、ID の持ち出しリスクに対処するための重要な管理である。組織にとってのデジタル ID の価値に応じて、デジタル ID の更新は、登録型のプルーフィングの対象となる場合がある。 |
+| アクセスの削除 | すべての企業リソースへのアクセスを削除します。アクセスを削除する必要性は、リーバープロセスまたはアクセス認証からの検証の結果として発生する可能性がある。デジタル ID が不要になった場合は、記録システムで無効にする必要があります。この操作は、中央ディレクトリからの削除だけでなく、このデジタル ID に関連付けられた記録を維持する下流システム、およびロ グおよび監査リポジトリからの削除をも意味する。このデジタル ID に使用されている識別子がすべてのシステムから削除されて初めて、デジタル ID は本当に削除されたとみなすことができる。現在のベストプラクティスを考慮したアカウントの無効化または削除の重要性についての詳細な議論は、Andrew Hindle の記事 "Impact of GDPR on Identity and Access Management "に記載されている。3 |
 
-## Customer Identity
+## 顧客のアイデンティティ
 
-Customer IAM has evolved more recently to support the processes that govern consumers’ User Experience as they interact with digital business. CIAM solutions have developed to provide companies with added value from the data they collect from customers as a result of the customers’ experiences with corporate websites and services. Most customer experiences are described as part of a “User Journey,” which represents the interactions (Authentication, Registration, Profile Update) that a customer has when engaging with digital resources such as websites, mobile apps, or IoT interfaces.
+顧客のIAMは、デジタルビジネスとのやり取りの中で消費者のユーザーエクスペリエンスを支配するプロセスをサポートするために、最近ではさらに進化してきました。CIAMソリューションは、企業のウェブサイトやサービスを利用した顧客の体験の結果として、顧客から収集したデータから企業に付加価値を提供するために発展してきました。ほとんどの顧客体験は、ウェブサイト、モバイルアプリ、IoTインターフェイスなどのデジタルリソースに関わる際に顧客が行うインタラクション（認証、登録、プロファイル更新）を表す「ユーザージャーニー」の一部として記述されています。
 
-The following diagram depicts the phases of the CIAM Lifecycle.
+次の図は、CIAMライフサイクルのフェーズを表しています。
 
-![Diagram of the Customer Identity Lifecycle, which includes Register, Manage Profile Data, Manage Privacy and Consent, Authenticate, Manage Access, Monitor, and Remove Access.](https://bok.idpro.org/article/id/31/image2.png)
+![登録、プロファイルデータの管理、プライバシーと同意の管理、認証、アクセスの管理、監視、アクセスの削除を含む、顧客のアイデンティティのライフサイクルの図。](https://bok.idpro.org/article/id/31/image2.png)
 
-Figure 2 – The Customer Identity Lifecycle
+Figure 2 – 顧客のアイデンティティのライフサイクル
 
-The following table describes the phases that support the customer identity lifecycle:
+次の表は、顧客のアイデンティティのライフサイクルをサポートするフェーズを説明しています。:
 
-| Lifecycle Phase | Description |
+| ライフサイクルフェーズ | 説明 |
 |--|--|
-| Register | The first part of the user journey is the creation of a customer identity through a registration process. This registration typically happens where a digital identity is required to enable an experience. Information is captured from a user as part of a user journey, and the user is allowed to consent to usage of the data provided. Registration interactions are typically a one time interaction with the customer that concludes with a confirmation of the purpose of the flow (i.e. “Your account has been created”). Registration interactions can also be transparent to the user if enabled thru a federated identity such as a social account signin (i.e. “Sign in with your Facebook account to get registered”). Registration does not require mandatory attributes other than the linking steps in the user journey to the identifier. Depending on the nature of the digital transaction, customer identities may require assurance over several attributes. A key consideration here is the attributes used to establish ownership (or recovery) for a digital identity, either via human or non-human means. |
-| Manage Profile Data | Each customer has a profile, and managing the profile data involves a user experience that allows a customer to update their data across corporate resources (e.g., websites or mobile apps). This phase primarily applies to user journey-based digital identities. In order to enable digital services to resume user journeys, it is necessary to enhance the digital identities with attributes that are specific to the way the user accesses the service. Two common techniques are cookies or device fingerprinting. For an illustration of the latter, see the EFFs Panopticlick site. 4 |
-| Manage Privacy and Consent | The customer lifecycle must include a process that informs and enables the customer to invoke their rights around knowledge and consent of what can happen with their customer information. |
-| Authenticate | As part of the workflow, the customer is required to validate their credential prior to accessing any customer services |
-| Manage Access | The customer lifecycle will require managing access to business services based on customer interactions. The user may also choose to provide additional attributes. The service would typically allow the user to create a username and password to login after their current session has expired. At this stage, a service may be able to combine multiple identifiers created by different devices (mobile, desktop, laptop, etc.). At this stage, the digital identity is considered pseudonymous as there is no assurance over the attributes provided by the user. |
-| Monitor | After the initial phases are complete, the customer lifecycle will move into monitoring, where the process of mining/collecting data about the customer and their experiences support a variety of business and consumer requirements occur. From a security perspective, monitoring data can be used to notify the customer of leaked credentials or other breaches of information. The business can also benefit by leveraging historical usage information of customer activity thru an analytics service. |
-| Remove Access | Removal of customer access is typically done as a result of a customer request or based on some amount of inactivity measure. |
+| 登録 | ユーザー・ジャーニーの最初の部分は、登録プロセスによるカスタマ・アイデンティティの作成である。この登録は通常、体験を可能にするためにデジタル ID が必要な場合に行われます。情報はユーザー・ジャーニーの一部としてユーザーから取得され、ユーザーは提供されたデータの使用に同意することができます。登録インタラクションは通常、フローの目的の確認（例：「あなたのアカウントが作成されました」）で終了する顧客との一回限りのインタラクションです。登録インタラクションは、ソーシャルアカウントのサインインのような統合されたアイデンティティを介して有効にすれば、ユーザーに透過的に見せることもできます（例：「Facebookアカウントでサインインして登録を取得する」）。登録は、ユーザージャーニーにおける識別子へのリンクステップ以外の必須属性を必要としない。デジタルトランザクションの性質に応じて、顧客の識別子にはいくつかの属性の保証が必要になる場合があります。ここで重要な検討事項は、人為的または非人為的な手段を介してデジタル ID の所有権（または回復）を確立するために使用される属性である。 |
+| プロフィールデータの管理 | 各顧客にはプロファイルがあり、プロファイルデータを管理することで、顧客が企業のリソース（ウェブサイトやモバイルアプリなど）をまたいでデータを更新できるようにするユーザー体験が必要になります。このフェーズは、主にユーザージャーニーベースのデジタルアイデンティティに適用されます。デジタルサービスがユーザーのジャーニーを再開できるようにするためには、ユーザーがサービスにアクセスする方法に固有の属性でデジタルアイデンティティを強化する必要があります。一般的な技術としては、クッキーまたはデバイスのフィンガープリンティングの2つがあります。後者の図解については、EFFsのPanopticlickサイトを参照してください。4 |
+| プライバシーと同意の管理 | 顧客のライフサイクルには、顧客の情報で何が起こるかについての知識と同意に関する顧客の権利を通知し、それを行使できるようにするプロセスが含まれていなければなりません。 |
+| 認証 | ワークフローの一環として、顧客は顧客サービスにアクセスする前にクレデンシャルを確認する必要があります。 |
+| アクセス管理 | 顧客のライフサイクルでは、顧客とのやりとりに基づいてビジネスサービスへのアクセスを管理する必要があります。また、ユーザーは追加の属性を提供することを選択することもできます。サービスは通常、ユーザーが現在のセッションの期限が切れた後にログインするためのユーザー名とパスワードを作成することを可能にする。この段階では、サービスは、異なるデバイス（モバイル、デスクトップ、ラップトップなど）によって作成された複数の識別子を組み合わせることができるかもしれない。この段階では、ユーザによって提供された属性に対する保証がないため、デジタル識別子は仮名とみなされる。 |
+| モニター | 初期フェーズが完了すると、顧客のライフサイクルはモニタリングに移行し、顧客に関するデータをマイニング/収集し、顧客の体験をサポートするプロセスが発生し、様々なビジネスや消費者の要求が発生します。セキュリティの観点からは、モニタリングデータは、流出したクレデンシャルやその他の情報漏洩を顧客に通知するために使用することができます。ビジネスはまた、分析サービスを通じて顧客の活動の過去の利用情報を活用することでも利益を得ることができます。 |
+| アクセスの削除 | 顧客のアクセスの削除は、通常、顧客の要求の結果として、またはある程度の非活動性対策に基づいて行われます。 |
 
-## Device or System Identity
+## デバイスまたはシステムのアイデンティティ
 
-A device or system identity is an evolving area in that devices are being enabled with increasing levels of technological capability, which increases the need to identify and manage them through a lifecycle. For example, cars have dozens of internal systems that require sophisticated management capabilities over the life of the vehicle identity. On the other end of the scale, some simple monitors can connect to a network and only provide a temperature value or some other basic information. All devices will need specific lifecycle phases to manage them based on their capabilities.
+デバイスまたはシステムのアイデンティティは、デバイスが技術的能力のレベルを上げて有効化されているという点で進化している分野であり、ライフサイクルを通じてデバイスを識別して管理する必要性が高まっています。例えば、自動車には何十もの内部システムがあり、車両のアイデンティティのライフサイクルにわたって高度な管理能力を必要とします。スケールの反対側では、ネットワークに接続して温度値やその他の基本的な情報を提供するだけの単純なモニターもあります。すべてのデバイスは、その能力に基づいて管理するために、特定のライフサイクルフェーズが必要になります。
 
-![A diagram of the Device Identity Lifecycle, which includes Create, Provision, Authenticate, Manage/Maintain, and De-Provision Access. ](https://bok.idpro.org/article/id/31/image3.png)
+![作成、プロビジョニング、認証、管理/保守、および脱プロビジョニング・アクセスを含むデバイス・アイデンティティ・ライフサイクルの図。 ](https://bok.idpro.org/article/id/31/image3.png)
 
-Figure 3 – The Device Identity Lifecycle
+Figure 3 – デバイスのアイデンティティのライフサイクル
 
-The following table describes the phases in a simple model that support the device identity lifecycle:
+次の表は、デバイス ID ライフサイクルをサポートするシンプルなモデルのフェーズを説明しています。
 
-| Lifecycle Phase | Description |
+| ライフサイクルフェーズ | 説明 |
 |--|--|
-| Create | The first stage in the device or system lifecycle is to kick off the process of creating the identifier that will be assigned to the device or system. |
-| Provision | When the identifier is assigned, the process of enabling the device or system to be recognized, monitored, and managed. Device provisioning is typically done using some sort of certificate or PKI infrastructure to ensure that only known devices can interact with corporate resources. |
-| Authenticate | Device or system authentication typically is done using a PKI infrastructure that ensures that the connected device is known and allowed to interact with the network. |
-| Manage / Maintain | Once the initial phases are complete, the device or system must be monitored to determine if any actions are needed to maintain the device. As an IT security best practice, credentials (passwords) associated with non-human identities should be rotated on a periodic basis to enable protection against brute force password based attacks. |
-| Deprovision Access | When the device or system is no longer in use (which may require different processes than workforce or customer digital identities to determine), remove access of the device or system from the system of record, disabling any access to the corporate network. |
+| 作成 | デバイスまたはシステムのライフサイクルの第一段階は、デバイスまたはシステムに割り当てられる識別子を作成するプロセスをキックオフすることである。 |
+| 準備 | 識別子が割り当てられると、デバイスまたはシステムを認識、監視、および管理できるようにするプロセス。デバイスのプロビジョニングは、通常、何らかの証明書または PKI インフラストラクチャを使用して行われ、既知のデバイスのみが企業のリソースと相互作用できるようにします。 |
+| 認証 | デバイスまたはシステムの認証は通常、PKI インフラストラクチャを使用して行われ、接続されたデバイスが既知であり、ネットワークとの相互作用を許可されていることを保証します。 |
+| 管理・維持 | 初期段階が完了したら、デバイスまたはシステムを監視して、デバイスを維持するために何かアクションが必要かどうかを判断する必要があります。IT セキュリティのベストプラクティスとして、人間以外のアイデンティティに関連付けられたクレデンシャル（パスワード）は、ブルートフォースパスワードベースの攻撃からの保護を可能にするために、定期的にローテーションする必要があります。 |
+| アクセスの無効化 | デバイスまたはシステムが使用されなくなった場合（従業員や顧客のデジタル ID とは異なるプロセスを必要とする場合があります）、記録システムからデバイスまたはシステムへのアクセスを削除し、企業ネットワークへのアクセスを無効にします。 |
 
-Other Digital Identity Relationships
+その他のデジタル・アイデンティティの関係
 
-Some digital transactions require an organization to establish relationships between digital identity issuers, also known as identity providers. These relationships may be with external partners (e.g., a B2B relationship) or across various enterprise applications (e.g., a single sign-on environment). In addition, digital identities may be related to other identities within an organization to establish delegation authority or to manage dual-control requirements. In all cases, relationships are typically managed either as attributes of the digital identity (e.g., identifiers for the allowed services) or as separate data points in a central directory (e.g., membership in an LDAP group).
+一部のデジタル取引では、組織はデジタル ID 発行者（ID プロバイダとしても知られる）間の関係を確立する必要がある。これらの関係は、外部パートナーとの関係（例：B2B 関係）や、さまざまなエンタープライズ・アプリケーショ ン全体（例：シングル・サインオン環境）との関係になることがある。さらに、委任権限を確立したり、二重制御要件を管理したりするために、デジタル ID を組織内の他の ID と関連付けることもあります。いずれの場合も、関係は通常、デジタル ID の属性（許可されたサービスの識別子など）として、または中央ディレクトリ内の別個のデータポイント（LDAP グループのメンバーシップなど）として管理されます。
 
-Common types of relationships are:
+関係の一般的なタイプは以下の通りです。
 
-| Inter-organizational (Federation) | ![](https://bok.idpro.org/article/id/31/image4.png) An organization relies on the digital identity and lifecycle management processes of another organization. |
-| Intra-organizational (Single Sign-On) | ![](https://bok.idpro.org/article/id/31/image5.png) A central digital identity, such as an account in a directory, is linked by downstream systems as authoritative for the purpose of authentication. |
-| Inter-entity (Delegation) | ![](https://bok.idpro.org/article/id/31/image6.png) Delegation involves assigning a subset of authority from an identity in one organization to an identity that resides in another organization. Authority is granted to across organizational boundaries for the purpose of enabling the executing transactions. Authority can be granted either explicitly or based on business rules at the organizational level. |
-| Intra-entity | ![](https://bok.idpro.org/article/id/31/image7.png) Either user-driven or out of organizational requirements, a relationship is established between multiple digital identities to identify a single human or non-human entity as the owner (see Enhance above). |
+| 組織間（連盟 | ![](https://bok.idpro.org/article/id/31/image4.png) 組織は、他の組織のデジタルアイデンティティとライフサイクル管理プロセスに依存しています。 |
+| 組織内（シングルサインオン | ![](https://bok.idpro.org/article/id/31/image5.png) ディレクトリ内のアカウントなどの中央のデジタル ID は、認証の目的のために下流のシステムによって権威あるものとしてリンクされています。. |
+| エンティティ間（委任 | ![](https://bok.idpro.org/article/id/31/image6.png) 委任には、ある組織内の ID から別の組織に存在する ID に権限のサブセットを割り当てることが含まれる。権限は、トランザクションの実行を可能にする目的で、組織の境界を越えて付与される。権限は、明示的に付与することも、組織レベルのビジネスルールに基づいて付与することもできる。 |
+| イントラエンティティ | ![](https://bok.idpro.org/article/id/31/image7.png) ユーザー主導型であるか、組織的な要件から外れたものであるかにかかわらず、複数のデジタル・アイデンティティの間に関係が確立され、単一の人間または非人間のエンティティを所有者として識別します（上記の「機能拡張」を参照）。 |
 
-Conclusion
+結論
 
-The complexity of the digital identity lifecycle frequently becomes apparent only after a number of years and as more functionality gets added to systems. Therefore, it is advisable to approach life cycle requirements with a longer-term horizon and ensure user management capabilities are extensible.
+デジタル ID ライフサイクルの複雑さは、多くの場合、数年後、システムに機能が追加されて初めて明らかになる。したがって、ライフサイクル要件には長期的な視野でアプローチし、ユーザー管理機能が拡張可能であることを確認することが望ましい。
 
-Acknowledgements
+謝辞
 
-The author would like to acknowledge Ian Glazer for articulating the progression of an identity from anonymous to pseudonymous and known. Dean Saxe contributed the classification of relationships. Jon Lehtinen and Heather Flanagan contributed encouragement and suffered through early drafts of the article.
+著者は、匿名から仮名、既知へとアイデンティティの進行を明確にしてくれたIan Glazerに感謝したい。Dean Saxeは関係性の分類に貢献した。Jon LehtinenとHeather Flanaganは励ましを提供し、記事の初期の草稿に苦しみました。
 
 1. “Create Read Update Delete” ldapwiki.com, paged last modified 19 March 2020, https://ldapwiki.com/wiki/Create%20Read%20Update%20Delete . ↩
 2. Glazer, Ian, “Identifiers and Usernames,” IDPro Body of Knowledge, 31 March 2020, https://bok.idpro.org/article/id/16/ . ↩

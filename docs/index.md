@@ -28,7 +28,7 @@
 * [Review – ISO/IEC 24760-1:2019 – Corey Scholefield – 2020-03-31](./Review–ISO_IEC24760-1_2019.md)
 * [Review – ISO/IEC 24760-2:2015 – George B. Dobbs – 2020 -06-18](./Review–ISO_IEC24760-2_2015.md)
 * [Review – ISO/IEC 24760-3:2016 – Espen Bago – Published 2020-06-18](./Review–ISO_IEC24760-3_2016.md)
-* Laws Governing Identity Systems – Thomas J. Smedinghoff – 2020-03-31
+* [Laws Governing Identity Systems – Thomas J. Smedinghoff – 2020-03-31](./laws_governing_identity_systems.md)
 * [An Introduction to GDPR – Andrew Cormack – 2020-03-31](./An_Introduction_to_GDPR_2020-03-31_ja.md)
 * [Impact of GDPR on Identity and Access Management – Andrew Hindle – 2020-03-31](./Impact_of_GDPR_on_Identity_and_Access_Management_2020-03-31_ja.md)
 

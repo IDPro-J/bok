@@ -53,3 +53,13 @@
 ### IAM Knowledge Sharing
 * Independent IAM Organizations – Mark Drummond – 2020-03-31
 
+
+***
+### 日本語版作成メンバ(alphabetical)
+* [Kengo Suzuki](https://twitter.com/ken5scal)
+* [Kristina Yasuda](https://twitter.com/kristinayasuda)
+* Kyoka Hanai
+* [Naohiro Fujie](https://twitter.com/phr_eidentity)
+* [Ryo Ito](https://twitter.com/ritou)
+* Takehisa Shibata
+* [Tatsuya Katsuhara](https://twitter.com/kthrtty)

@@ -11,7 +11,7 @@
 ### From the Editor
 * [Editor’s Note – Heather Flanagan – Issue 1](./editors_note_issue_1.md)
 * [Editor’s Note – Heather Flanagan – Issue 2](./editors_note_issue_2.md)
-* Editor’s Note – Heather Flanagan – Issue 3
+* [Editor’s Note – Heather Flanagan – Issue 3](./editors_note_issue_3.md)
 * [Terminology in the IDPro Body of Knowledge – Heather Flanagan – Updated 2020-10-31](./Terminology_in_the_IDPro_Body_of_Knowledge.md)
 
 ### Introduction
